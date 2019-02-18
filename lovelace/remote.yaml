@@ -1,0 +1,1273 @@
+---
+###################################################################################################
+## Lovelace View - remote
+###################################################################################################
+title: Remote
+icon: mdi:remote
+cards:
+  - type: custom:compact-custom-header
+    main_config: true
+    disable: true
+    exceptions:
+      - conditions:
+          user: remote
+        config:
+          disable: false
+          options: clock
+          clock_format: 24
+          menu: show
+          notification: hide
+###################################################################################################
+## Navigation Buttons (Shown on top of all remotes)
+###################################################################################################
+  - type: horizontal-stack
+    cards:
+      - type: custom:card-modder
+        card:
+          type: entity-button
+          icon: hide
+          name: TIVO
+          entity: input_select.remote
+          hold_action: none
+          tap_action:
+            action: call-service
+            service: input_select.set_options
+            service_data:
+              entity_id: input_select.remote
+              options: "TIVO"
+        style:
+          background-color: '[[ if(input_select.remote == "TIVO", "gray", "rgba(56, 60, 69, 1)") ]]'
+          border-radius: 20px
+          border: solid 3px rgba(255, 125, 125,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+      - type: custom:card-modder
+        card:
+          type: entity-button
+          icon: hide
+          name: SHIELD
+          entity: input_boolean.dummy
+          hold_action: none
+          tap_action:
+            action: call-service
+            service: input_select.set_options
+            service_data:
+              entity_id: input_select.remote
+              options: "SHIELD"
+        style:
+          background-color: '[[ if(input_select.remote == "SHIELD", "gray", "rgba(56, 60, 69, 1)") ]]'
+          border-radius: 20px
+          border: solid 3px rgba(255, 125, 125,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+      - type: custom:card-modder
+        card:
+          type: entity-button
+          icon: hide
+          name: KANALER
+          entity: input_boolean.dummy
+          hold_action: none
+          tap_action:
+            action: call-service
+            service: input_select.set_options
+            service_data:
+              entity_id: input_select.remote
+              options: "CHANNELS"
+        style:
+          background-color: '[[ if(input_select.remote == "CHANNELS", "gray", "rgba(56, 60, 69, 1)") ]]'
+          border-radius: 20px
+          border: solid 3px rgba(255, 125, 125,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+      - type: custom:card-modder
+        card:
+          type: entity-button
+          icon: hide
+          name: RADIO
+          entity: input_boolean.dummy
+          hold_action: none
+          tap_action:
+            action: call-service
+            service: input_select.set_options
+            service_data:
+              entity_id: input_select.remote
+              options: "RADIO"
+        style:
+          background-color: '[[ if(input_select.remote == "RADIO", "gray", "rgba(56, 60, 69, 1)") ]]'
+          border-radius: 20px
+          border: solid 3px rgba(255, 125, 125,1)
+          box-shadow: 3px 3px rgba(0,0,0,0.4)
+
+  - type: custom:state-switch
+    entity: input_select.remote
+    states:
+###################################################################################################
+## TIVO - SONOS CONTROLLER - HEADER - IMAGE WITH VOLUME AND TV CHANNEL
+###################################################################################################
+      TIVO:
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture-elements
+                  image: /local/lovelace/remote/tivo_tivobox.png
+                  elements:
+                    - type: state-label
+                      entity: sensor.sonos_volume_level
+                      prefix: 'Volume - '
+                      tap_action: none
+                      hold_action: none
+                      style: {color: white, left: 14%, top: 25%}
+                    - type: state-label
+                      entity: sensor.kanal
+                      prefix: 'Channel - '
+                      tap_action: none
+                      hold_action: none
+                      style: {color: white, left: 87%, top: 25%}
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+##-------------------------------------------------------------------------------------------------
+## TIVO - ROW 2 - 4 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tivo_sonos_logo.png
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tivo_comhem_logo.png
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-up-bold
+                  name: UP
+                  entity: switch.tivo_up
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_up
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:power-standby
+                  name: TV ON/OFF
+                  entity: script.tv_power
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: script.tv_power
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+##-------------------------------------------------------------------------------------------------
+## TIVO - ROW 3 - 4 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-plus
+                  name: VOLUME
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_up
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-left-bold
+                  name: LEFT
+                  entity: switch.tivo_left
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_left
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:camera-control
+                  name: ENTER
+                  entity: switch.tivo_select
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_select
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-right-bold
+                  name: RIGHT
+                  entity: switch.tivo_right
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_right
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+##-------------------------------------------------------------------------------------------------
+## TIVO - ROW 4 - 4 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-minus
+                  name: VOLYM
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_down
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:minus
+                  name: CHANNEL
+                  entity: switch.tivo_channel_down
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_channel_down
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-down-bold
+                  name: DOWN
+                  entity: switch.tivo_down
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_down
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:plus
+                  name: CHANNEL
+                  entity: switch.tivo_channel_up
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_channel_up
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+##-------------------------------------------------------------------------------------------------
+## TIVO - ROW 5 - 4 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-mute
+                  name: MUTE
+                  entity: input_boolean.dummy
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+                  hold_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
+                style:
+                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:television
+                  name: TIVO
+                  entity: switch.tivo_tivo
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tivo
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:format-list-bulleted
+                  name: EPG
+                  entity: switch.tivo_epg
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_epg
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:television-classic
+                  name: LIVE TV
+                  entity: switch.tivo_live_tv
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_live_tv
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+##-------------------------------------------------------------------------------------------------
+## TIVO - ROW 6 - 4 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:gamepad-variant
+                  name: HDMI 1
+                  entity: script.tv_hdmi1
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: script.tv_hdmi1
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:laptop-mac
+                  name: HDMI 2
+                  entity: script.tv_hdmi2
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: script.tv_hdmi2
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:television-classic
+                  name: HDMI 3
+                  entity: input_boolean.tv_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.tv_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:apple
+                  name: HDMI 4
+                  entity: script.tv_hdmi4
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: script.tv_hdmi4
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(40,40,40,1)
+###################################################################################################
+## SHIELD CONTROLLER - HEADER - SHIELD LOGO
+###################################################################################################
+      SHIELD:
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/shield_logo.png
+                style:
+                  padding: 10px 10px 10px 10px
+                  border-radius: 20px
+                  background-color: rgba(56,60,69,1)
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## SHIELD - ROW 1 - 5 BUTTONS (NODE-RED CONTROLLED)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:youtube
+                  name: YOUTUBE
+                  entity: input_boolean.youtube_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.youtube_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:kodi
+                  name: KODI
+                  entity: input_boolean.kodi_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.kodi_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:twitch
+                  name: TWITCH
+                  entity: input_boolean.twitch_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.twitch_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:netflix
+                  name: NETFLIX
+                  entity: input_boolean.netflix_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.netflix_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:youtube
+                  name: TV4PLAY
+                  entity: input_boolean.tv4play_trigger
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: input_boolean.turn_on
+                    service_data:
+                      entity_id: input_boolean.tv4play_trigger
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## SHIELD - ROW 2 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:power
+                  name: "ON"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_WAKEUP
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-up-bold
+                  name: "UP"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_DPAD_UP
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:power-off
+                  name: "OFF"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_SLEEP
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## SHIELD - ROW 4 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-left-bold
+                  name: "LEFT"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_DPAD_LEFT
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:camera-control
+                  name: "ENTER"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_ENTER
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-right-bold
+                  name: "RIGHT"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_DPAD_RIGHT
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## SHIELD - ROW 5 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:backburger
+                  name: "BACK"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_BACK
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:arrow-down-bold
+                  name: "DOWN"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_DPAD_DOWN
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:home-circle
+                  name: "HOME"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_HOME
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## SHIELD - ROW 6 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:play
+                  name: "PLAY"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_MEDIA_PLAY
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:pause
+                  name: "PAUSE"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_MEDIA_PAUSE
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:stop
+                  name: "STOP"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.androidtv_key
+                    service_data:
+                      entity_id: media_player.shield
+                      key: KEYCODE_MEDIA_STOP
+                style:
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(118,185,0,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+###################################################################################################
+## FAVORITE CHANNELS - ROW 1 - 3 BUTTONS - TIVO Box Controlled by TCP + TELNET
+###################################################################################################
+      CHANNELS:
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_svt1.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_svt1
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_svt2.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_svt2
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv3.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv3
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 2 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv4.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv4
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal5.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_kanal5
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv6.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv6
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 3 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_sjuan.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv7
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv8.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv8
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal9.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv9
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 4 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv10.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv10
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal-11.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv11
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv12.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv12
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 5 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_mtv_rock.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_mtvrock
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_mtv_live.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_mtvlive
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_vh1.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_vh1
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+###################################################################################################
+## RADIO CHANNELS - ROW 1 - 3 BUTTONS (SONOS PLAYBAR PLAYING FAVORITE RADIO SOURCES)
+###################################################################################################
+      RADIO:
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_mixmegapol.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Mix Megapol Stockholm
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_rixfm.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: RIX FM
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_vinyl.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Vinyl FM
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## RADIO CHANNELS - ROW 2 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_banditrock.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: BANDIT ROCK
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_rockklassiker.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Rockklassiker
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_nrj.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: NRJ
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## RADIO CHANNELS - ROW 3 - 4 BUTTONS (SONOS PLAYBAR VOLUME CONTROLL AND TV INPUT SOURCE)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-plus
+                  name: "VOLYM"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_up
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-minus
+                  name: "VOLYM"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_down
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-mute
+                  name: "MUTE"
+                  entity: input_boolean.dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+                  hold_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:television-classic
+                  name: "LIVE TV"
+                  entity: switch.tivo_live_tv
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: TV
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+###################################################################################################

@@ -1,0 +1,20 @@
+---
+############################################################################
+## Control Nvidia Shield TV https://github.com/a1ex4/home-assistant/blob/androidtv/homeassistant/components/media_player/androidtv.py
+## Use adb-addon from Community Addons
+############################################################################
+media_player:
+  - platform: androidtv
+    host: 192.168.111.11
+    name: Shield
+    adb_server_ip: 127.0.0.1
+    adb_server_port: 5037
+    apps:
+      "kodi": "Kodi"
+      "netflix": "Netflix"
+      "spotify": "Spotify"
+      "tvlauncher": "Homescreen"
+      "youtube": "Youtube"
+      "twitch": "Twitch"
+      "svt": "SVT Play"
+      "tv4": "TV4 Play"

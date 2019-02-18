@@ -1,0 +1,180 @@
+sensor:
+  - platform: tcp
+    name: Kanal Raw
+    host: 192.168.111.10
+    port: 31339
+    payload: IRCODE
+
+  - platform: template
+    sensors:
+      kanal:
+        friendly_name: "Kanal"
+        value_template: "{{ states.sensor.kanal_raw.state|replace('CH_STATUS', '')|replace('LOCAL', '')|replace('RECORDING', '')|float|round (0) }}"
+        
+input_select:
+  remote:
+    name: Select Remote Controll
+    options:
+      - TIVO
+      - SHIELD
+      - CHANNELS
+      - RADIO
+    initial: SHIELD
+    icon: mdi:remote
+        
+switch:
+  platform: telnet
+  switches:
+    tivo_channel_up:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo kanal Upp
+      command_on: "IRCODE CHANNELUP"
+      command_off: "IRCODE CHANNELUP"
+    tivo_channel_down:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo kanal Ner
+      command_on: "IRCODE CHANNELDOWN"
+      command_off: "IRCODE CHANNELDOWN"
+    tivo_up:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Upp
+      command_on: "IRCODE UP"
+      command_off: "IRCODE UP"
+    tivo_down:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Ner
+      command_on: "IRCODE DOWN"
+      command_off: "IRCODE DOWN"
+    tivo_left:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Vänster
+      command_on: "IRCODE LEFT"
+      command_off: "IRCODE LEFT"
+    tivo_right:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Höger
+      command_on: "IRCODE RIGHT"
+      command_off: "IRCODE RIGHT"
+    tivo_select:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Ok
+      command_on: "IRCODE SELECT"
+      command_off: "IRCODE SELECT"
+    tivo_tivo:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo
+      command_on: "IRCODE TIVO"
+      command_off: "IRCODE TIVO"
+    tivo_live_tv:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo LiveTv
+      command_on: "IRCODE LIVETV"
+      command_off: "IRCODE LIVETV"
+    tivo_epg:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo EPG
+      command_on: "IRCODE GUIDE"
+      command_off: "IRCODE GUIDE"
+#----------------------------------------------------------------
+# Favorite Channels
+#----------------------------------------------------------------
+    tivo_svt1:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo SVT1
+      command_on: "SETCH 21"
+      command_off: "SETCH 21"
+    tivo_svt2:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo SVT2
+      command_on: "SETCH 22"
+      command_off: "SETCH 22"
+    tivo_tv3:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV3
+      command_on: "SETCH 23"
+      command_off: "SETCH 23"
+    tivo_tv4:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV4
+      command_on: "SETCH 24"
+      command_off: "SETCH 24"
+    tivo_kanal5:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo Kanal 5
+      command_on: "SETCH 25"
+      command_off: "SETCH 25"
+    tivo_tv6:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV6
+      command_on: "SETCH 26"
+      command_off: "SETCH 26"
+    tivo_tv7:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV7
+      command_on: "SETCH 27"
+      command_off: "SETCH 27"
+    tivo_tv8:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV8
+      command_on: "SETCH 8"
+      command_off: "SETCH 8"
+    tivo_tv9:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV9
+      command_on: "SETCH 29"
+      command_off: "SETCH 29"
+    tivo_tv10:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV10
+      command_on: "SETCH 10"
+      command_off: "SETCH 10"
+    tivo_tv11:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV11 
+      command_on: "SETCH 31"
+      command_off: "SETCH 31"
+    tivo_tv12:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo TV12
+      command_on: "SETCH 32"
+      command_off: "SETCH 32"
+    tivo_mtvrock:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo MTV Rock 
+      command_on: "SETCH 51"
+      command_off: "SETCH 51"
+    tivo_mtvlive:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo MTV Live
+      command_on: "SETCH 57"
+      command_off: "SETCH 57"
+    tivo_vh1:
+      resource: 192.168.111.10
+      port: 31339
+      name: Tivo VH1
+      command_on: "SETCH 59"
+      command_off: "SETCH 59"

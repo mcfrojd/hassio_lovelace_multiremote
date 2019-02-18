@@ -1,0 +1,92 @@
+switch:
+  - platform: broadlink
+    host: !secret broadlink_host
+    mac: !secret broadlink_mac
+    type: rm_mini
+    timeout: 15
+
+script:
+  tv_hdmi1:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBIAAABIZMRExITEjYSExMRERURExEUEDkRNxEUEjYSNhM3ETcSNxITETgSNhI2ExMQExE4ETYSNxIUERMSExE4ETcRFBETEQANBQ=="
+            - "JgBIAAABIZMRExITEjYSExMRERURExEUEDkRNxEUEjYSNhM3ETcSNxITETgSNhI2ExMQExE4ETYSNxIUERMSExE4ETcRFBETEQANBQ=="
+  tv_hdmi2:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBQAAABJJMSEhISETgSEhITEBMSEhMSETcSNxMREjcSNxI3EjcSOBETERITNhM2EhITERM2EzcRNxI3ExISEhI3EjcRExETEgAFLQABJEoRAA0FAAAAAAAAAAA="
+            - "JgBQAAABJJMSEhISETgSEhITEBMSEhMSETcSNxMREjcSNxI3EjcSOBETERITNhM2EhITERM2EzcRNxI3ExISEhI3EjcRExETEgAFLQABJEoRAA0FAAAAAAAAAAA="
+  tv_hdmi3:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBIAAABIZMSFBISETgRExEUERQQFBETEjcTNhMSETgRNxE3EjcROBM2ERMSFBE4ERMSNxM2EjUSFBE2ETgRExM2ExITEhATEwANBQ=="
+            - "JgBIAAABIZMSFBISETgRExEUERQQFBETEjcTNhMSETgRNxE3EjcROBM2ERMSFBE4ERMSNxM2EjUSFBE2ETgRExM2ExITEhATEwANBQ=="
+  tv_hdmi4:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBQAAABKJMSEhISEjcSEhISEhISEhISEjcSNxISEjcSNxI3EjcSNxISEjcSEhI3EjcSEhI3EjcSNxISEjcSEhISEjcSEhISEgAFGgABKEoSAAxWDQUAAAAAAAA="
+            - "JgBQAAABKJMSEhISEjcSEhISEhISEhISEjcSNxISEjcSNxI3EjcSNxISEjcSEhI3EjcSEhI3EjcSNxISEjcSEhISEjcSEhISEgAFGgABKEoSAAxWDQUAAAAAAAA="
+  tv_power:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBgAAABKJQSExITEzcTExITERQSExIUEjgSOBITEjgTNxM3EzgSOBITEhMSExM4EhMSExITEhQSOBI4EjgSExI4EzcTOBI4EgAFHwABKEoSAAxfAAEoShIADF8AAShKEgANBQAAAAAAAAAA"
+            - "JgBmAAABKJQSExMTETkRFBITEhMZDRgNEjgSOBMSEzgSOBI4EjgSODcUEhMROBMTEhMTExITEjgSOBI4EhQRORI4EjgSOBIABR4AASlKEwAMXgABJ0sTAAxcAAErSRIADF8AAShKEwANBQAA"
+  tv_vol_upp:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBgAAABKZIUEhMSFjIWERQSExITEhQSEzcTNxcOEzcUNhQ2FDYUNhQSEzcTEhQRFBITEhMSFBEUNxMSEzYUNxM3FDYUNhQ1FQAFHgABKUgVAAxeAAEoSBUADF4AASlJGQANBQAAAAAAAAAA"
+            - "JgBgAAABKZIUEhMSFjIWERQSExITEhQSEzcTNxcOEzcUNhQ2FDYUNhQSEzcTEhQRFBITEhMSFBEUNxMSEzYUNxM3FDYUNhQ1FQAFHgABKUgVAAxeAAEoSBUADF4AASlJGQANBQAAAAAAAAAA"
+  tv_vol_ner:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - "JgBgAAABKJIUExITEzcTExITEhMSExMTEjgSOBITEzcTNxM4ETkSOBI4EjgSExMTEhMSExITExMSExITEzcTNxM3Gi8UOBI4EgAFHwABKEsSAAxfAAEoShIADF8AASdLEwANBQAAAAAAAAAA"
+            - "JgBgAAABKJIUExITEzcTExITEhMSExMTEjgSOBITEzcTNxM4ETkSOBI4EjgSExMTEhMSExITExMSExITEzcTNxM3Gi8UOBI4EgAFHwABKEsSAAxfAAEoShIADF8AASdLEwANBQAAAAAAAAAA"
+  tv_upp:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - ""
+            - ""
+  tv_ner:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - ""
+            - ""
+  tv_hoger:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - ""
+            - ""
+  tv_vanster:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - ""
+            - ""
+  tv_enter:
+    sequence:
+      - service: switch.broadlink_send_packet_192_168_111_5
+        data:
+          packet:
+            - ""
+            - ""

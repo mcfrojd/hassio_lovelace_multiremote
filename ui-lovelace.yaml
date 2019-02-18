@@ -1,0 +1,18 @@
+title: Home Control Panel
+resources:
+  - url: /local/tracker-card.js
+    type: js
+  - url: /local/card-tools.js
+    type: js
+  - url: /local/card-modder.js
+    type: js
+  - url: /local/compact-custom-header.js
+    type: module
+  - url: /local/state-switch.js
+    type: js
+  - url: /local/layout-card.js
+    type: js
+
+views:
+  - !include lovelace/remote.yaml
+  - !include lovelace/settings.yaml

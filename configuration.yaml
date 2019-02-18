@@ -1,0 +1,30 @@
+homeassistant:
+  name: Hemma
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 102
+  unit_system: metric
+  time_zone: Europe/Stockholm
+  temperature_unit: C
+  packages: !include_dir_named packages
+
+http:
+  base_url: !secret base_url
+
+lovelace:
+  mode: yaml
+
+config:
+
+updater:
+discovery:
+
+history:
+
+logbook:
+
+map:
+
+sun:
+
+system_health:
