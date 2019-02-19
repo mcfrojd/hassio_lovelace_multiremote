@@ -1,16 +1,16 @@
 title: Home Control Panel
 resources:
-  - url: /customcard/tracker-card.js
+  - url: /customcards/tracker-card.js
     type: js
-  - url: /customcard/card-tools.js
+  - url: /customcards/card-tools.js
     type: js
-  - url: /customcard/card-modder.js
+  - url: /customcards/card-modder.js
     type: js
-  - url: /customcard/compact-custom-header.js
+  - url: /customcards/compact-custom-header.js
     type: module
-  - url: /customcard/state-switch.js
+  - url: /customcards/state-switch.js
     type: js
-  - url: /customcard/layout-card.js
+  - url: /customcards/layout-card.js
     type: js
 
 views:

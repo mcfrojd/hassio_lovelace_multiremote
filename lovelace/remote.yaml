@@ -1238,7 +1238,6 @@ cards:
                   icon: mdi:volume-mute
                   name: "MUTE"
                   entity: input_boolean.sonos_dummy
-                  hold_action: none
                   tap_action:
                     action: call-service
                     service: media_player.volume_mute
