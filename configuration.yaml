@@ -17,14 +17,11 @@ lovelace:
 config:
 
 updater:
+
 discovery:
 
 history:
 
 logbook:
-
-map:
-
-sun:
 
 system_health:
