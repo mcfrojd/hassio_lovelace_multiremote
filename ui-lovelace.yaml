@@ -14,5 +14,5 @@ resources:
     type: js
 
 views:
-  - !include lovelace/remote.yaml
+  - !include lovelace/remote_navigation.yaml
   - !include lovelace/settings.yaml

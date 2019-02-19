@@ -1,0 +1,268 @@
+###################################################################################################
+## FAVORITE CHANNELS - ROW 1 - 3 BUTTONS - TIVO Box Controlled by TCP + TELNET
+###################################################################################################
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_svt1.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_svt1
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_svt2.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_svt2
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv3.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv3
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 2 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv4.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv4
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal5.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_kanal5
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv6.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv6
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 3 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_sjuan.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv7
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv8.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv8
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal9.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv9
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 4 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv10.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv10
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_kanal-11.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv11
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_tv12.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_tv12
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## FAVORITE CHANNELS - ROW 5 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_mtv_rock.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_mtvrock
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_mtv_live.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_mtvlive
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/tv_vh1.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_vh1
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(68,153,203,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)

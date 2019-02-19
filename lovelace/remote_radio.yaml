@@ -1,0 +1,199 @@
+###################################################################################################
+## RADIO CHANNELS - ROW 1 - 3 BUTTONS (SONOS PLAYBAR PLAYING FAVORITE RADIO SOURCES)
+###################################################################################################
+        type: custom:layout-card
+        layout: vertical
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_mixmegapol.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Mix Megapol Stockholm
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_rixfm.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: RIX FM
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_vinyl.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Vinyl FM
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## RADIO CHANNELS - ROW 2 - 3 BUTTONS
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_banditrock.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: BANDIT ROCK
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_rockklassiker.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: Rockklassiker
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: picture
+                  image: /local/lovelace/remote/radio_nrj.png
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: NRJ
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(225,225,40,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+##-------------------------------------------------------------------------------------------------
+## RADIO CHANNELS - ROW 3 - 4 BUTTONS (SONOS PLAYBAR VOLUME CONTROLL AND TV INPUT SOURCE)
+##-------------------------------------------------------------------------------------------------
+          - type: horizontal-stack
+            cards:
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-plus
+                  name: "VOLYM"
+                  entity: input_boolean.sonos_dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_up
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-minus
+                  name: "VOLYM"
+                  entity: input_boolean.sonos_dummy
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_down
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:volume-mute
+                  name: "MUTE"
+                  entity: input_boolean.sonos_dummy
+                  tap_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+                  hold_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:card-modder
+                card:
+                  type: entity-button
+                  icon: mdi:television-classic
+                  name: "LIVE TV"
+                  entity: switch.tivo_live_tv
+                  hold_action: none
+                  tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: TV
+                style:
+                  padding: 5px 5px 5px 5px
+                  background-color: rgba(56,60,69,1)
+                  border-radius: 20px
+                  border: solid 3px rgba(80,120,140,1)
+                  box-shadow: 3px 3px rgba(0,0,0,0.4)
