@@ -1,35 +1,11 @@
 ---
 ############################################################################
-## Control Nvidia Shield TV (https://megamorphf.github.io/homeassistant/hyperion/ssh/hassio/2018/01/22/controlling-anything-via-ssh.html)
-## Spin up sorccu/adb docker container on another VM (other ip adress)
+## Control Nvidia Shield TV
 ############################################################################
-## Input Booleans (Activates the node-red flows)
+## Input Boolean
+## Dummy entity only there for the lovelace button-entity card to work
 ############################################################################
 input_boolean:
-  twitch_trigger:
-    name: trigger twitch
-    initial: off
-    icon: mdi:twitch
-  youtube_trigger:
-    name: trigger youtube
-    initial: off
-    icon: mdi:youtube
-  kodi_trigger:
-    name: trigger kodi
-    initial: off
-    icon: mdi:kodi
-  netflix_trigger:
-    name: trigger netflix
-    initial: off
-    icon: mdi:netflix
-  tv4play_trigger:
-    name: trigger tv4play
-    initial: off
-    icon: mdi:youtube
-  tv_trigger:
-    name: trigger tv
-    initial: off
-    icon: mdi:television
-  dummy:
-    name: Input Dummy
+  shield_dummy:
+    name: Shield Dummy
     initial: off

@@ -4,13 +4,30 @@
 # Sensors
 ############################################################################
 sensor:
+
+############################################################################
+# Sensor that shows volume level on the TIVO image
+############################################################################
   - platform: template
     sensors:
       sonos_volume_level:
         friendly_name: "Volym"
         value_template: "{{ ((state_attr('media_player.sonos_living_room', 'volume_level') * 100)|round (0))|int}}"
+
+############################################################################
+# Sensor used only to make the mute button change color when active
+############################################################################
   - platform: template
     sensors:
       sonos_muted:
         friendly_name: "Sonos Muted"
         value_template: "{{ state_attr('media_player.sonos_living_room', 'is_volume_muted') }}"
+
+############################################################################
+## Input Boolean
+## Dummy entity only there for the lovelace button-entity card to work
+############################################################################
+input_boolean:
+  sonos_dummy:
+    name: Sonos Dummy
+    initial: off

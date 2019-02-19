@@ -5,6 +5,9 @@
 title: Remote
 icon: mdi:remote
 cards:
+###################################################################################################
+## Custom Compact Header - This will only effect when logged in as the user "remote"
+###################################################################################################
   - type: custom:compact-custom-header
     main_config: true
     disable: true
@@ -45,7 +48,7 @@ cards:
           type: entity-button
           icon: hide
           name: SHIELD
-          entity: input_boolean.dummy
+          entity: input_select.remote
           hold_action: none
           tap_action:
             action: call-service
@@ -63,7 +66,7 @@ cards:
           type: entity-button
           icon: hide
           name: KANALER
-          entity: input_boolean.dummy
+          entity: input_select.remote
           hold_action: none
           tap_action:
             action: call-service
@@ -81,7 +84,7 @@ cards:
           type: entity-button
           icon: hide
           name: RADIO
-          entity: input_boolean.dummy
+          entity: input_select.remote
           hold_action: none
           tap_action:
             action: call-service
@@ -189,7 +192,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-plus
                   name: VOLUME
-                  entity: input_boolean.dummy
+                  entity: input_boolean.tivo_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -258,7 +261,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-minus
                   name: VOLYM
-                  entity: input_boolean.dummy
+                  entity: input_boolean.tivo_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -327,7 +330,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-mute
                   name: MUTE
-                  entity: input_boolean.dummy
+                  entity: input_boolean.tivo_dummy
                   tap_action:
                     action: call-service
                     service: media_player.volume_mute
@@ -430,13 +433,11 @@ cards:
                   type: entity-button
                   icon: mdi:television-classic
                   name: HDMI 3
-                  entity: input_boolean.tv_trigger
+                  entity: script.tv_hdmi3
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
-                    service_data:
-                      entity_id: input_boolean.tv_trigger
+                    service: script.tv_hdmi3
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -484,13 +485,14 @@ cards:
                   type: entity-button
                   icon: mdi:youtube
                   name: YOUTUBE
-                  entity: input_boolean.youtube_trigger
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.androidtv_intent
                     service_data:
-                      entity_id: input_boolean.youtube_trigger
+                      entity_id: media_player.shield
+                      intent: "-n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -501,13 +503,14 @@ cards:
                   type: entity-button
                   icon: mdi:kodi
                   name: KODI
-                  entity: input_boolean.kodi_trigger
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.androidtv_intent
                     service_data:
-                      entity_id: input_boolean.kodi_trigger
+                      entity_id: media_player.shield
+                      intent: "-n org.xbmc.kodi/.Splash"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -518,13 +521,14 @@ cards:
                   type: entity-button
                   icon: mdi:twitch
                   name: TWITCH
-                  entity: input_boolean.twitch_trigger
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.androidtv_intent
                     service_data:
-                      entity_id: input_boolean.twitch_trigger
+                      entity_id: media_player.shield
+                      intent: "-n tv.twitch.android.app/tv.twitch.android.apps.TVLandingActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -535,13 +539,14 @@ cards:
                   type: entity-button
                   icon: mdi:netflix
                   name: NETFLIX
-                  entity: input_boolean.netflix_trigger
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.androidtv_intent
                     service_data:
-                      entity_id: input_boolean.netflix_trigger
+                      entity_id: media_player.shield
+                      intent: "-n com.netflix.ninja/.MainActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -552,13 +557,14 @@ cards:
                   type: entity-button
                   icon: mdi:youtube
                   name: TV4PLAY
-                  entity: input_boolean.tv4play_trigger
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: input_boolean.turn_on
+                    service: media_player.androidtv_intent
                     service_data:
-                      entity_id: input_boolean.tv4play_trigger
+                      entity_id: media_player.shield
+                      intent: "-n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -574,7 +580,7 @@ cards:
                   type: entity-button
                   icon: mdi:power
                   name: "ON"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -592,7 +598,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-up-bold
                   name: "UP"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -610,7 +616,7 @@ cards:
                   type: entity-button
                   icon: mdi:power-off
                   name: "OFF"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -633,7 +639,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-left-bold
                   name: "LEFT"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -651,7 +657,7 @@ cards:
                   type: entity-button
                   icon: mdi:camera-control
                   name: "ENTER"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -669,7 +675,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-right-bold
                   name: "RIGHT"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -692,7 +698,7 @@ cards:
                   type: entity-button
                   icon: mdi:backburger
                   name: "BACK"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -710,7 +716,7 @@ cards:
                   type: entity-button
                   icon: mdi:arrow-down-bold
                   name: "DOWN"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -728,7 +734,7 @@ cards:
                   type: entity-button
                   icon: mdi:home-circle
                   name: "HOME"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -751,7 +757,7 @@ cards:
                   type: entity-button
                   icon: mdi:play
                   name: "PLAY"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -769,7 +775,7 @@ cards:
                   type: entity-button
                   icon: mdi:pause
                   name: "PAUSE"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -787,7 +793,7 @@ cards:
                   type: entity-button
                   icon: mdi:stop
                   name: "STOP"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.shield_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -1195,7 +1201,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-plus
                   name: "VOLYM"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.sonos_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -1213,7 +1219,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-minus
                   name: "VOLYM"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.sonos_dummy
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -1231,7 +1237,7 @@ cards:
                   type: entity-button
                   icon: mdi:volume-mute
                   name: "MUTE"
-                  entity: input_boolean.dummy
+                  entity: input_boolean.sonos_dummy
                   hold_action: none
                   tap_action:
                     action: call-service

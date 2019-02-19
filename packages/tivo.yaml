@@ -1,3 +1,24 @@
+############################################################################
+## Input Boolean
+## Activates the node-red flows
+############################################################################
+input_boolean:
+  tv_trigger:
+    name: trigger tv
+    initial: off
+    icon: mdi:television
+
+############################################################################
+## Input Boolean
+## Dummy entity only there for the lovelace button-entity card to work
+############################################################################
+  tivo_dummy:
+    name: TIVO Dummy
+    initial: off
+
+############################################################################
+## Sensor to get active channel from the TIVO box
+############################################################################
 sensor:
   - platform: tcp
     name: Kanal Raw
@@ -5,23 +26,18 @@ sensor:
     port: 31339
     payload: IRCODE
 
+############################################################################
+## Templated sensor to show active channel on the TIVO image
+############################################################################
   - platform: template
     sensors:
       kanal:
         friendly_name: "Kanal"
         value_template: "{{ states.sensor.kanal_raw.state|replace('CH_STATUS', '')|replace('LOCAL', '')|replace('RECORDING', '')|float|round (0) }}"
-        
-input_select:
-  remote:
-    name: Select Remote Controll
-    options:
-      - TIVO
-      - SHIELD
-      - CHANNELS
-      - RADIO
-    initial: SHIELD
-    icon: mdi:remote
-        
+
+############################################################################
+## Switches for controlling the TIVO Box
+############################################################################
 switch:
   platform: telnet
   switches:
