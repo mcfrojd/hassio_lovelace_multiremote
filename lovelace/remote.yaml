@@ -476,7 +476,7 @@ cards:
                   border: solid 3px rgba(118,185,0,1)
                   box-shadow: 3px 3px rgba(0,0,0,0.4)
 ##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 1 - 5 BUTTONS (NODE-RED CONTROLLED)
+## SHIELD - ROW 1 - 5 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
 ##-------------------------------------------------------------------------------------------------
           - type: horizontal-stack
             cards:

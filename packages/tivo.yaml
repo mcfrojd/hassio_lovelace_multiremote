@@ -1,17 +1,8 @@
 ############################################################################
 ## Input Boolean
-## Activates the node-red flows
-############################################################################
-input_boolean:
-  tv_trigger:
-    name: trigger tv
-    initial: off
-    icon: mdi:television
-
-############################################################################
-## Input Boolean
 ## Dummy entity only there for the lovelace button-entity card to work
 ############################################################################
+input_boolean:
   tivo_dummy:
     name: TIVO Dummy
     initial: off
