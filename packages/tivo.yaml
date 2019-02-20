@@ -1,13 +1,4 @@
 ############################################################################
-## Input Boolean
-## Dummy entity only there for the lovelace button-entity card to work
-############################################################################
-input_boolean:
-  tivo_dummy:
-    name: TIVO Dummy
-    initial: off
-
-############################################################################
 ## Sensor to get active channel from the TIVO box
 ############################################################################
 sensor:

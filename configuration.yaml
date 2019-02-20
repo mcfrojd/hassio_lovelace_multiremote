@@ -16,12 +16,10 @@ lovelace:
 
 config:
 
-updater:
+#discovery:
 
-discovery:
+#history:
 
-history:
-
-logbook:
+#logbook:
 
 system_health:

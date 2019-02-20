@@ -20,12 +20,3 @@ sensor:
       sonos_muted:
         friendly_name: "Sonos Muted"
         value_template: "{{ state_attr('media_player.sonos_living_room', 'is_volume_muted') }}"
-
-############################################################################
-## Input Boolean
-## Dummy entity only there for the lovelace button-entity card to work
-############################################################################
-input_boolean:
-  sonos_dummy:
-    name: Sonos Dummy
-    initial: off

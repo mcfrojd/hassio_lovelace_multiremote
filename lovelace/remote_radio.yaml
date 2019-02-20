@@ -123,7 +123,7 @@
                   type: entity-button
                   icon: mdi:volume-plus
                   name: "VOLYM"
-                  entity: input_boolean.sonos_dummy
+                  entity: media_player.sonos_living_room
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -141,7 +141,7 @@
                   type: entity-button
                   icon: mdi:volume-minus
                   name: "VOLYM"
-                  entity: input_boolean.sonos_dummy
+                  entity: media_player.sonos_living_room
                   hold_action: none
                   tap_action:
                     action: call-service
@@ -159,7 +159,7 @@
                   type: entity-button
                   icon: mdi:volume-mute
                   name: "MUTE"
-                  entity: input_boolean.sonos_dummy
+                  entity: media_player.sonos_living_room
                   tap_action:
                     action: call-service
                     service: media_player.volume_mute
