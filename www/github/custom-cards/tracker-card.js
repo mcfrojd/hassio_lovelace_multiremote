@@ -87,13 +87,6 @@ class TrackerCard extends HTMLElement {
           .update_pending {
             
           }
-          .hidden-button {
-            padding: 0px;
-            border: 0px;
-            background: none;
-            font-weight: 700;
-            color: red;
-          }
         `;
     content.innerHTML = `
       <div id='content'>
@@ -118,7 +111,7 @@ class TrackerCard extends HTMLElement {
     const config = this._config;
     const root = this.shadowRoot;
     const card = root.lastChild;
-    const pending_updates = [];
+    const all_elements = [];
     this.myhass = hass;
     this.handlers = this.handlers || [];
     let card_content = '';
@@ -133,14 +126,7 @@ class TrackerCard extends HTMLElement {
         const list = this._filterCards(hass.states[tracker].attributes);
         const domain = hass.states[tracker].attributes.domain;
         const repo = hass.states[tracker].attributes.repo;
-        
-        for (var i in list) {
-          if (list[i][1].has_update) {
-            pending_updates.push(list[i])
-          }
-        }
-        
-        
+
         card_content += `
           <tr><td colspan='3' class='separator'>${domain.replace('_', ' ')}:</td></tr>
         `;
@@ -157,11 +143,9 @@ class TrackerCard extends HTMLElement {
                   <td class='local'>
                     ${elem[1].local?elem[1].local:'n/a'}
                   </td>
-                  <td class='remote'>
+                  <td class='remote' style="font-weight: 700; color: red;">
                     <div>
-                      <button title="Update this" class='hidden-button' id='${elem[0]}'>
-                        ${elem[1].remote?elem[1].remote:'n/a'}
-                      </button>
+                      ${elem[1].remote?elem[1].remote:'n/a'}
                     </div>
                   </td>
             `:`
@@ -175,7 +159,9 @@ class TrackerCard extends HTMLElement {
                     ${elem[1].local?elem[1].local:'n/a'}
                   </td>
                   <td class='remote'>
-                    ${elem[1].remote?elem[1].remote:'n/a'}
+                    <div>
+                      ${elem[1].remote?elem[1].remote:'n/a'}
+                    </div>
                   </td>
             `}`
             ).join('')}
@@ -183,27 +169,21 @@ class TrackerCard extends HTMLElement {
           card_content += updated_content;
         }
         // attach handlers only once
-        if (!this.handlers['custom_updater']) {
+        if (!this.handlers['custom_updater-main']) {
           card.querySelector('#update').addEventListener('click', event => {
             this.myhass.callService('custom_updater', 'update_all', {});
           });
           card.querySelector('#check').addEventListener('click', event => {
             this.myhass.callService('custom_updater', 'check_all', {});
           });
-          this.handlers['custom_updater'] = true;
+          this.handlers['custom_updater-main'] = true;
         }
         root.lastChild.hass = hass;
       }
+
     });
     card_content += `</tbody></table>`;
     root.getElementById('content').innerHTML = card_content;
-    for (var i in pending_updates) {
-      card.querySelector('#' + pending_updates[i][0]).addEventListener('click', event => {
-        this.myhass.callService('custom_updater', 'install', {'element': pending_updates[i][0]});
-        this.myhass.callService('custom_updater', 'check_all', {});
-      });
-    }
-
   }
   getCardSize() {
     return 1;

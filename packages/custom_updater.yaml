@@ -1,5 +1,4 @@
 custom_updater:
-  mode: yaml
   track:
     - cards
     - components

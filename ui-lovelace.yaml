@@ -2,7 +2,7 @@ title: Home Control Panel
 resources:
   - url: /customcards/github/custom-cards/tracker-card.js?track=true
     type: module
-  - url: /customcards/card-tools.js
+  - url: /customcards/github/thomasloven/card-tools.js?track=true
     type: js
   - url: /customcards/card-modder.js
     type: js
