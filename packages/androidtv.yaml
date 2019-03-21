@@ -10,11 +10,11 @@ media_player:
     adb_server_ip: 127.0.0.1
     adb_server_port: 5037
     apps:
-      "kodi": "Kodi"
-      "netflix": "Netflix"
-      "spotify": "Spotify"
-      "tvlauncher": "Homescreen"
-      "youtube": "Youtube"
-      "twitch": "Twitch"
-      "svt": "SVT Play"
-      "tv4": "TV4 Play"
+      "org.xbmc.kodi": "Kodi"
+      "com.netflix.ninja": "Netflix"
+      "com.spotify.tv.android": "Spotify"
+      "com.google.android.tvlauncher": "Homescreen"
+      "com.google.android.youtube.tv": "Youtube"
+      "tv.twitch.android.app": "Twitch"
+      "se.svt.android.svtplay": "SVT Play"
+      "se.tv4.tv4playtab": "TV4 Play"
