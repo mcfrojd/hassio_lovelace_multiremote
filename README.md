@@ -2,7 +2,7 @@
 Lovelace example of my multi remote.
 
 <p align="center">
-<img src="https://i.imgur.com/8JSAgd0.gifv" alt="Multiremote" width="500">
+<img src="https://i.imgur.com/8JSAgd0.gif" alt="Multiremote" width="500">
 </p>
 
 
