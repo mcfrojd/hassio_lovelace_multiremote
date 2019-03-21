@@ -24,11 +24,6 @@ Lovelace example of my multi remote.
   - layout-card            | https://github.com/thomasloven/lovelace-layout-card
   - state-switch           | https://github.com/thomasloven/lovelace-state-switch
 
-### Custom Components Used:
-
-To controll Nvidia Shield TV
-  - androidtv | https://github.com/a1ex4/home-assistant/blob/androidtv/homeassistant/components/media_player/androidtv.py
-
 ### Community Hass.io Add-ons Used:
 
 To controll Nvidia Shield TV
