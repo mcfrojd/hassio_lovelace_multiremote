@@ -9,30 +9,43 @@ class {
     }
   }
 
+  static deprecationWarning() {
+    if(window.cardTools_deprecationWarning) return;
+    console.warn("One or more of your lovelace plugins are using the functions cardTools.litElement(), cardTools.litHtml() or cardTools.hass(). Those are replaced with better alternatives and will be removed a some point in the future.")
+    console.warn("If you are a plugin developer, make sure you are using the new functions (see documentation).");
+    console.warn("If you are a plugin user, feel free to ignore this warning (or poke the developer of your plugins - not me though, I already know about this).")
+    console.warn("Best regards / thomasloven - " + (document.currentScript && document.currentScript.src));
+  window.cardTools_deprecationWarning = true;
+  }
+
   static get LitElement() {
     return Object.getPrototypeOf(customElements.get('home-assistant-main'));
   }
   static litElement() { // Backwards compatibility - deprecated
+    this.deprecationWarning();
     return this.LitElement;
   }
 
   static get LitHtml() {
-    return this.litElement().prototype.html;
+    return this.LitElement.prototype.html;
   }
   static litHtml() { // Backwards compatibility - deprecated
+    this.deprecationWarning();
     return this.LitHtml;
   }
 
   static get LitCSS() {
-    return this.litElement().prototype.css;
+    return this.LitElement.prototype.css;
   }
 
   static get hass() {
     var hass = function() { // Backwards compatibility - deprecated
+      this.deprecationWarning();
       return hass;
     }
     for (var k in document.querySelector('home-assistant').hass)
       hass[k] = document.querySelector('home-assistant').hass[k];
+    hass.original = document.querySelector('home-assistant').hass;
     return hass;
   }
 
@@ -46,36 +59,35 @@ class {
     if(entity) {
       entity.dispatchEvent(ev);
     } else {
-      var root = document
-        .querySelector("home-assistant")
-        .shadowRoot.querySelector("home-assistant-main")
-        .shadowRoot.querySelector("app-drawer-layout partial-panel-resolver")
-        .shadowRoot.querySelector("ha-panel-lovelace")
-        .shadowRoot.querySelector("hui-root")
-      if (root)
-        root
-          .shadowRoot.querySelector("ha-app-layout #view")
-          .firstElementChild
-          .dispatchEvent(ev);
+      var root = document.querySelector("home-assistant");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("home-assistant-main");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
+      root = root && root.shadowRoot || root;
+      root = root && root.querySelector("ha-panel-lovelace");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("hui-root");
+      root = root && root.shadowRoot;
+      root = root && root.querySelector("ha-app-layout #view");
+      root = root && root.firstElementChild;
+      if (root) root.dispatchEvent(ev);
     }
   }
 
   static get lovelace() {
-    var root = document
-      .querySelector("home-assistant")
-      .shadowRoot.querySelector("home-assistant-main")
-      .shadowRoot.querySelector("app-drawer-layout partial-panel-resolver")
-      .shadowRoot.querySelector("ha-panel-lovelace")
-      .shadowRoot.querySelector("hui-root")
+    var root = document.querySelector("home-assistant");
+    root = root && root.shadowRoot;
+    root = root && root.querySelector("home-assistant-main");
+    root = root && root.shadowRoot;
+    root = root && root.querySelector("app-drawer-layout partial-panel-resolver");
+    root = root && root.shadowRoot || root;
+    root = root && root.querySelector("ha-panel-lovelace")
+    root = root && root.shadowRoot;
+    root = root && root.querySelector("hui-root")
     if (root) {
-      var ll =  root
-        .shadowRoot.querySelector("ha-app-layout #view")
-        .firstElementChild
-        .lovelace;
-      ll.current_view = root
-        .shadowRoot.querySelector("ha-app-layout #view")
-        .firstElementChild
-        .index;
+      var ll =  root.lovelace
+      ll.current_view = root.___curView;
       return ll;
     }
     return null;
@@ -123,7 +135,7 @@ class {
       config
     );
     element.style.display = "None";
-    const time = setTimeout(() => {
+    const timer = setTimeout(() => {
       element.style.display = "";
     }, 2000);
     // Remove error if element is defined later
@@ -217,23 +229,73 @@ class {
     return /\[\[\s+.*\s+\]\]/.test(text);
   }
 
-  static parseTemplateString(str) {
+  static parseTemplateString(str, specialData = {}) {
     if(typeof(str) !== "string") return text;
-    var RE_entity = /^[a-zA-Z0-9_.]+\.[a-zA-Z0-9_]+$/;
-    var RE_if = /^if\(([^,]*),([^,]*),(.*)\)$/;
-    var RE_expr = /([^=<>!]+)\s*(==|<|>|<=|>=|!=)\s*([^=<>!]+)/
+    const FUNCTION = /^[a-zA-Z0-9_]+\(.*\)$/;
+    const EXPR = /([^=<>!]+)\s*(==|!=|<|>|<=|>=)\s*([^=<>!]+)/;
+    const SPECIAL = /^\{.+\}$/;
+    const STRING = /^"[^"]*"|'[^']*'$/;
+
+    if(typeof(specialData) === "string") specialData = {};
+    specialData = Object.assign({
+      user: this.hass.user.name,
+      browser: this.deviceID,
+      hash: location.hash.substr(1) || ' ',
+    }, specialData);
+
+    const _parse_function = (str) => {
+      let args = [str.substr(0, str.indexOf('(')).trim()]
+      str = str.substr(str.indexOf('(')+1);
+      while(str) {
+        let index = 0;
+        let parens = 0;
+        let quote = false;
+        while(str[index]) {
+          let c = str[index++];
+
+          if(c === quote && index > 1 && str[index-2] !== "\\")
+              quote = false;
+          else if(`"'`.includes(c))
+            quote = c;
+          if(quote) continue;
+
+          if(c === '(')
+            parens = parens + 1;
+          else if(c === ')') {
+            parens = parens - 1;
+            continue
+          }
+          if(parens > 0) continue;
+
+          if(",)".includes(c)) break;
+        }
+        args.push(str.substr(0, index-1).trim());
+        str = str.substr(index);
+      }
+      return args;
+    };
+
+    const _parse_special = (str) => {
+      str = str.substr(1, str.length - 2);
+      return specialData[str] || `{${str}}`;
+    };
 
     const _parse_entity = (str) => {
-      str = str.trim();
-      const parts = str.split(".");
-      let v = this.hass().states[`${parts.shift()}.${parts.shift()}`];
-      if(!parts.length) return v['state'];
-      parts.forEach(item => v=v[item]);
+      str = str.split(".");
+      let v;
+      if(str[0].match(SPECIAL)) {
+        v = _parse_special(str.shift());
+        v = this.hass.states[v] || v;
+      } else {
+        v = this.hass.states[`${str.shift()}.${str.shift()}`];
+        if(!str.length) return v['state'];
+      }
+      str.forEach(item => v=v[item]);
       return v;
     }
 
-    const _parse_expr = (str) => {
-      str = RE_expr.exec(str);
+    const _eval_expr = (str) => {
+      str = EXPR.exec(str);
       if(str === null) return false;
       const lhs = this.parseTemplateString(str[1]);
       const rhs = this.parseTemplateString(str[3]);
@@ -245,38 +307,35 @@ class {
       return eval(expr);
     }
 
-    const _parse_if = (str) => {
-      str = RE_if.exec(str);
-      if(_parse_expr(str[1]))
-        return this.parseTemplateString(str[2]);
-      return this.parseTemplateString(str[3]);
+    const _eval_function = (args) => {
+      if(args[0] === "if") {
+        if(_eval_expr(args[1]))
+          return this.parseTemplateString(args[2]);
+        return this.parseTemplateString(args[3]);
+      }
     }
 
     try {
       str = str.trim();
-      if(str.match(RE_if))
-        return _parse_if(str);
-      if(str.match(RE_entity))
+      if(str.match(STRING))
+        return str.substr(1, str.length - 2);
+      if(str.match(SPECIAL))
+        return _parse_special(str);
+      if(str.match(FUNCTION))
+        return _eval_function(_parse_function(str));
+      if(str.includes("."))
         return _parse_entity(str);
-      if(str.match(/^".*"$/) || str.match(/^'.*'$/))
-        return str.substr(1, str.length-2);
-      if(str.match(/{user}/))
-        return this.hass().user.name;
-      if(str.match(/{browser}/))
-        return this.deviceID();
-      if(str.match(/{hash}/))
-        return location.hash.substr(1);
       return str;
     } catch (err) {
-      return `[[ Template matching failed ${str} ]]`;
+      return `[[ Template matching failed: ${str} ]]`;
     }
   }
 
-  static parseTemplate(text, error) {
+  static parseTemplate(text, data = {}) {
     if(typeof(text) !== "string") return text;
     // Note: .*? is javascript regex syntax for NON-greedy matching
     var RE_template = /\[\[\s(.*?)\s\]\]/g;
-    text = text.replace(RE_template, (str, p1, offset, s) => this.parseTemplateString(p1));
+    text = text.replace(RE_template, (str, p1, offset, s) => this.parseTemplateString(p1, data));
     return text;
   }
 
@@ -297,9 +356,9 @@ class {
   }
 
   static localize(key, def="") {
-    const language = this.hass().language;
-    if(this.hass().resources[language] && this.hass().resources[language][key])
-      return this.hass().resources[language][key];
+    const language = this.hass.language;
+    if(this.hass.resources[language] && this.hass.resources[language][key])
+      return this.hass.resources[language][key];
     return def;
   }
 
@@ -323,22 +382,22 @@ class {
     </app-toolbar>
   `;
     popup.appendChild(message);
-    cardTools.moreInfo(Object.keys(cardTools.hass().states)[0]);
+    this.moreInfo(Object.keys(this.hass.states)[0]);
     let moreInfo = document.querySelector("home-assistant")._moreInfoEl;
     moreInfo._page = "none";
     moreInfo.shadowRoot.appendChild(popup);
     moreInfo.large = large;
+    document.querySelector("home-assistant").provideHass(message);
 
     setTimeout(() => {
       let interval = setInterval(() => {
         if (moreInfo.getAttribute('aria-hidden')) {
           popup.parentNode.removeChild(popup);
           clearInterval(interval);
-        } else {
-          message.hass = cardTools.hass();
         }
       }, 100)
     }, 1000);
+  return moreInfo;
   }
   static closePopUp() {
     let moreInfo = document.querySelector("home-assistant")._moreInfoEl;

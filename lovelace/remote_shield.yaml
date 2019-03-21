@@ -125,10 +125,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_WAKEUP
+                      command: POWER
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -143,10 +143,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_DPAD_UP
+                      command: UP
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -161,10 +161,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_SLEEP
+                      command: SLEEP
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -184,10 +184,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_DPAD_LEFT
+                      command: LEFT
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -202,10 +202,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_ENTER
+                      command: ENTER
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -223,7 +223,7 @@
                     service: media_player.androidtv_key
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_DPAD_RIGHT
+                      command: RIGHT
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -243,10 +243,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_BACK
+                      command: BACK
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -261,10 +261,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_DPAD_DOWN
+                      command: DOWN
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -279,10 +279,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_HOME
+                      command: HOME
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -302,10 +302,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_MEDIA_PLAY
+                      command: "input keyevent 126"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -320,10 +320,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_MEDIA_PAUSE
+                      command: "input keyevent 127"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -338,10 +338,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      key: KEYCODE_MEDIA_STOP
+                      command: "input keyevent 86"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px

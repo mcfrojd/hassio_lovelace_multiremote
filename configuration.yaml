@@ -17,6 +17,12 @@ lovelace:
 config:
 
 discovery:
+  ignore:
+    - google_cast
+    - apple_tv
+    - ikea_tradfri
+    - tellstick
+    - esphome
 
 history:
 

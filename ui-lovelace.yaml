@@ -10,7 +10,7 @@ resources:
     type: module
   - url: /customcards/state-switch.js
     type: js
-  - url: /customcards/layout-card.js
+  - url: /customcards/github/thomasloven/layout-card.js?track=true
     type: js
 
 views:
