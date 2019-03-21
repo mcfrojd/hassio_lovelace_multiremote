@@ -1,8 +1,8 @@
-# McFrojd's Home Assistant Lovelace Multi Remote
+# McFrojd's Home Assistant Lovelace Multi Remote (needs update since hassio 0.90, adb 0.3.0 and the new androidtv component)
 Lovelace example of my multi remote.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes.gif" alt="Multiremote" width="500">
+<img src="https://i.imgur.com/8JSAgd0.gif" alt="Multiremote" width="500">
 </p>
 
 
@@ -48,3 +48,6 @@ To controll SONOS
   - https://community.home-assistant.io/t/control-tivo-box-over-telnet/12430
   - https://community.home-assistant.io/t/my-lovelace-plugins/70726
   - https://community.home-assistant.io/t/native-support-for-android-tv-android-devices/82792
+
+### Se my public Gist of more types of "intents" for the Shield and its apps.
+  - https://gist.github.com/mcfrojd/9e6875e1db5c089b1e3ddeb7dba0f304
