@@ -30,10 +30,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_intent
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      intent: "-n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
+                      command:"am start -a android.intent.action.VIEW -d -n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -48,10 +48,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_intent
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      intent: "-n org.xbmc.kodi/.Splash"
+                      command:"am start -a android.intent.action.VIEW -d -n org.xbmc.kodi/.Splash"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -66,10 +66,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_intent
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      intent: "-n tv.twitch.android.app/tv.twitch.android.apps.TVLandingActivity"
+                      command:"am start -a android.intent.action.VIEW -d -n tv.twitch.android.app/tv.twitch.android.apps.TVLandingActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -84,10 +84,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_intent
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      intent: "-n com.netflix.ninja/.MainActivity"
+                      command:"am start -a android.intent.action.VIEW -d -n com.netflix.ninja/.MainActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -102,10 +102,10 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_intent
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
-                      intent: "-n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
+                      command:"am start -a android.intent.action.VIEW -d -n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
