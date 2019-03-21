@@ -1,4 +1,4 @@
-# McFrojd's Home Assistant Lovelace Multi Remote
+# McFrojd's Home Assistant Lovelace Multi Remote (needs update since hassio 0.90, adb 0.3.0 and the new androidtv component)
 Lovelace example of my multi remote.
 
 <p align="center">
