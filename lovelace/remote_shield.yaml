@@ -220,7 +220,7 @@
                   hold_action: none
                   tap_action:
                     action: call-service
-                    service: media_player.androidtv_key
+                    service: androidtv.adb_command
                     service_data:
                       entity_id: media_player.shield
                       command: RIGHT
