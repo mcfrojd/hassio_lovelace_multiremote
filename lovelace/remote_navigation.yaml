@@ -65,7 +65,7 @@ cards:
         card:
           type: entity-button
           icon: hide
-          name: KANALER
+          name: CHANNELS
           entity: input_select.remote
           hold_action: none
           tap_action:
