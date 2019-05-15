@@ -68,12 +68,12 @@
                 card:
                   type: entity-button
                   icon: mdi:power-standby
-                  name: TV ON/OFF
-                  entity: script.tv_power
+                  name: "TV ON/OFF"
+                  entity: switch.tv_power
                   hold_action: none
                   tap_action:
-                    action: call-service
-                    service: script.tv_power
+                    action: toggle
+                    service: switch.tv_power
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -300,12 +300,12 @@
                 card:
                   type: entity-button
                   icon: mdi:gamepad-variant
-                  name: HDMI 1
-                  entity: script.tv_hdmi1
+                  name: "HDMI 1"
+                  entity: switch.tv_hdmi1
                   hold_action: none
                   tap_action:
-                    action: call-service
-                    service: script.tv_hdmi1
+                    action: toggle
+                    service: switch.tv_hdmi1
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -314,12 +314,12 @@
                 card:
                   type: entity-button
                   icon: mdi:laptop-mac
-                  name: HDMI 2
-                  entity: script.tv_hdmi2
+                  name: "HDMI 2"
+                  entity: switch.tv_hdmi2
                   hold_action: none
                   tap_action:
-                    action: call-service
-                    service: script.tv_hdmi2
+                    action: toggle
+                    service: switch.tv_hdmi2
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -328,12 +328,12 @@
                 card:
                   type: entity-button
                   icon: mdi:television-classic
-                  name: HDMI 3
-                  entity: script.tv_hdmi3
+                  name: "HDMI 3"
+                  entity: switch.tv_hdmi3
                   hold_action: none
                   tap_action:
-                    action: call-service
-                    service: script.tv_hdmi3
+                    action: toggle
+                    service: switch.tv_hdmi3
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
@@ -342,12 +342,12 @@
                 card:
                   type: entity-button
                   icon: mdi:apple
-                  name: HDMI 4
-                  entity: script.tv_hdmi4
+                  name: "HDMI 4"
+                  entity: switch.tv_hdmi4
                   hold_action: none
                   tap_action:
-                    action: call-service
-                    service: script.tv_hdmi4
+                    action: toggle
+                    service: switch.tv_hdmi4
                 style:
                   background-color: rgba(56,60,69,1)
                   border-radius: 20px
