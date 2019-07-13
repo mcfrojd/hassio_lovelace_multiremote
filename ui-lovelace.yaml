@@ -1,18 +1,29 @@
 title: Home Control Panel
 resources:
-  - url: /customcards/github/custom-cards/tracker-card.js?track=true
-    type: module
-  - url: /customcards/github/thomasloven/card-tools.js?track=true
+  - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
-  - url: /customcards/card-modder.js
+  - url: /community_plugin/lovelace-card-modder/card-modder.js
     type: js
-  - url: /customcards/github/maykar/compact-custom-header.js?track=true
-    type: module
-  - url: /customcards/state-switch.js
+  - url: /community_plugin/lovelace-layout-card/layout-card.js
     type: js
-  - url: /customcards/github/thomasloven/layout-card.js?track=true
+  - url: /community_plugin/compact-custom-header/compact-custom-header.js
+    type: module 
+  - url: /community_plugin/lovelace-state-switch/state-switch.js
     type: js
+
+###################################################################################################
+## Custom Compact Header - Main config is in here
+###################################################################################################
+cch:
+  exceptions:
+    - conditions:
+        user: remote
+      config:
+        disable: false
+        options: clock
+        clock_format: 24
+        menu: show
+        notification: hide
 
 views:
   - !include lovelace/remote_navigation.yaml
-  - !include lovelace/settings.yaml

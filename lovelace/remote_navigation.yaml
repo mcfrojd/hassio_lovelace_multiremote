@@ -6,21 +6,6 @@ title: Remote
 icon: mdi:remote
 cards:
 ###################################################################################################
-## Custom Compact Header - This will only effect when logged in as the user "remote"
-###################################################################################################
-  - type: custom:compact-custom-header
-    main_config: true
-    disable: true
-    exceptions:
-      - conditions:
-          user: remote
-        config:
-          disable: false
-          options: clock
-          clock_format: 24
-          menu: show
-          notification: hide
-###################################################################################################
 ## Navigation Buttons (Shown on top of all remotes)
 ###################################################################################################
   - type: horizontal-stack
