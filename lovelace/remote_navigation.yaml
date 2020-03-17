@@ -1,6 +1,6 @@
 ---
 ###################################################################################################
-## Lovelace View - remote
+## Lovelace View - remote (2020-03-17 updated to remove old card-modder and change to button-card)
 ###################################################################################################
 title: Remote
 icon: mdi:remote
