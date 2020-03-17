@@ -2,28 +2,28 @@ title: Home Control Panel
 resources:
   - url: /community_plugin/lovelace-card-tools/card-tools.js
     type: js
-  - url: /community_plugin/lovelace-card-modder/card-modder.js
-    type: js
+  # - url: /community_plugin/lovelace-card-modder/card-modder.js
+  #   type: js
   - url: /community_plugin/lovelace-layout-card/layout-card.js
     type: js
-  - url: /community_plugin/compact-custom-header/compact-custom-header.js
-    type: module 
   - url: /community_plugin/lovelace-state-switch/state-switch.js
     type: js
 
-###################################################################################################
-## Custom Compact Header - Main config is in here
-###################################################################################################
-cch:
-  exceptions:
-    - conditions:
-        user: remote
-      config:
-        disable: false
-        options: clock
-        clock_format: 24
-        menu: show
-        notification: hide
+# ###################################################################################################
+# ## Custom Compact Header - Main config is in here
+# ###################################################################################################
+# custom_header:
+#   compact_mode: true
+#   background: var(--app-header-background-color)
+#   elements_color: var(--app-header-text-color)
+#   active_tab_color: var(--state-icon-active-color)
+#   tab_indicator_color: var(--state-icon-active-color)
+#   exceptions:
+#     - conditions:
+#         user: remote
+#       config:
+#         default_tab: remote
+#         kiosk_mode: true
 
 views:
   - !include lovelace/remote_navigation.yaml
