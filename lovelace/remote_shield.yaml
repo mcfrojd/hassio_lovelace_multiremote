@@ -1,21 +1,63 @@
+---
 ###################################################################################################
-## SHIELD CONTROLLER - HEADER - SHIELD LOGO
+# Nvidia Shiled Remote
+###################################################################################################
+# Top row - Nvidia Shield Logo
 ###################################################################################################
         type: custom:layout-card
         layout: vertical
+        min_columns: 1
+        max_columns: 1
+        max_width: 99%
         cards:
-          - type: horizontal-stack
+          - type: vertical-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/shield_logo.png
-                style:
-                  padding: 10px 10px 10px 10px
-                  border-radius: 20px
-                  background-color: rgba(56,60,69,1)
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: "custom:button-card"
+                color_type: label-card
+                show_entity_picture: true
+                entity_picture: /local/lovelace/remote/shield_logo.png
+                styles:
+                  card:
+                    - background-color: rgba(56,60,69,1)
+                    - border-radius: 20px
+                    - border-style: solid
+                    - border-width: 3px
+                    - border-color: >
+                        [[[
+                          if (states['media_player.shield'].state == "off")
+                            return "rgba(56,60,69,1)";
+                          return "rgba(118,185,0,1)";
+                        ]]]
+                    - height: 75px
+                    - padding: 5px
+                  entity_picture:
+                    - height: 80%
+                    - width: 90%
+                    - filter: >
+                        [[[
+                          if (states['media_player.shield'].state == "off")
+                            return "grayscale(100%)";
+                          return "grayscale(0%)";
+                        ]]]                      
+
+# ###################################################################################################
+# ## SHIELD CONTROLLER - HEADER - SHIELD LOGO
+# ###################################################################################################
+#         type: custom:layout-card
+#         layout: vertical
+#         cards:
+#           - type: horizontal-stack
+#             cards:
+#               - type: custom:card-modder
+#                 card:
+#                   type: picture
+#                   image: /local/lovelace/remote/shield_logo.png
+#                 style:
+#                   padding: 10px 10px 10px 10px
+#                   border-radius: 20px
+#                   background-color: rgba(56,60,69,1)
+#                   border: solid 3px rgba(118,185,0,1)
+#                   box-shadow: 3px 3px rgba(0,0,0,0.4)
 ##-------------------------------------------------------------------------------------------------
 ## SHIELD - ROW 1 - 5 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
 ##-------------------------------------------------------------------------------------------------

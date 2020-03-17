@@ -10,79 +10,82 @@ cards:
 ###################################################################################################
   - type: horizontal-stack
     cards:
-      - type: custom:card-modder
-        card:
-          type: entity-button
-          icon: hide
-          name: TIVO
-          entity: input_select.remote
-          hold_action: none
-          tap_action:
-            action: call-service
-            service: input_select.set_options
-            service_data:
-              entity_id: input_select.remote
-              options: "TIVO"
-        style:
-          background-color: '[[ if(input_select.remote == "TIVO", "gray", "rgba(56, 60, 69, 1)") ]]'
-          border-radius: 20px
-          border: solid 3px rgba(255, 125, 125,1)
-          box-shadow: 3px 3px rgba(0,0,0,0.4)
-      - type: custom:card-modder
-        card:
-          type: entity-button
-          icon: hide
-          name: SHIELD
-          entity: input_select.remote
-          hold_action: none
-          tap_action:
-            action: call-service
-            service: input_select.set_options
-            service_data:
-              entity_id: input_select.remote
-              options: "SHIELD"
-        style:
-          background-color: '[[ if(input_select.remote == "SHIELD", "gray", "rgba(56, 60, 69, 1)") ]]'
-          border-radius: 20px
-          border: solid 3px rgba(255, 125, 125,1)
-          box-shadow: 3px 3px rgba(0,0,0,0.4)
-      - type: custom:card-modder
-        card:
-          type: entity-button
-          icon: hide
-          name: CHANNELS
-          entity: input_select.remote
-          hold_action: none
-          tap_action:
-            action: call-service
-            service: input_select.set_options
-            service_data:
-              entity_id: input_select.remote
-              options: "CHANNELS"
-        style:
-          background-color: '[[ if(input_select.remote == "CHANNELS", "gray", "rgba(56, 60, 69, 1)") ]]'
-          border-radius: 20px
-          border: solid 3px rgba(255, 125, 125,1)
-          box-shadow: 3px 3px rgba(0,0,0,0.4)
-      - type: custom:card-modder
-        card:
-          type: entity-button
-          icon: hide
-          name: RADIO
-          entity: input_select.remote
-          hold_action: none
-          tap_action:
-            action: call-service
-            service: input_select.set_options
-            service_data:
-              entity_id: input_select.remote
-              options: "RADIO"
-        style:
-          background-color: '[[ if(input_select.remote == "RADIO", "gray", "rgba(56, 60, 69, 1)") ]]'
-          border-radius: 20px
-          border: solid 3px rgba(255, 125, 125,1)
-          box-shadow: 3px 3px rgba(0,0,0,0.4)
-
+      - type: "custom:button-card"
+        entity: input_select.remote
+        hold_action: none
+        tap_action:
+          action: call-service
+          service: input_select.set_options
+          service_data:
+            entity_id: input_select.remote
+            options: "TIVO"
+        name: TIVO
+        show_icon: false
+        styles:
+          card:
+            - background-color: '[[ if(input_select.remote == "TIVO", "gray", "rgba(56, 60, 69, 1)") ]]'
+            - border-radius: 20px
+            - border-style: solid
+            - border-width: 3px
+            - border-color: rgba(255, 125, 125,1)
+#--------------------------------------------------------------------------------------------------
+      - type: "custom:button-card"
+        entity: input_select.remote
+        hold_action: none
+        tap_action:
+          action: call-service
+          service: input_select.set_options
+          service_data:
+            entity_id: input_select.remote
+            options: "SHIELD"
+        name: SHIELD
+        show_icon: false
+        styles:
+          card:
+            - background-color: '[[ if(input_select.remote == "SHIELD", "gray", "rgba(56, 60, 69, 1)") ]]'
+            - border-radius: 20px
+            - border-style: solid
+            - border-width: 3px
+            - border-color: rgba(255, 125, 125,1)
+#--------------------------------------------------------------------------------------------------
+      - type: "custom:button-card"
+        entity: input_select.remote
+        hold_action: none
+        tap_action:
+          action: call-service
+          service: input_select.set_options
+          service_data:
+            entity_id: input_select.remote
+            options: "CHANNELS"
+        name: CHANNELS
+        show_icon: false
+        styles:
+          card:
+            - background-color: '[[ if(input_select.remote == "CHANNELS", "gray", "rgba(56, 60, 69, 1)") ]]'
+            - border-radius: 20px
+            - border-style: solid
+            - border-width: 3px
+            - border-color: rgba(255, 125, 125,1)
+#--------------------------------------------------------------------------------------------------
+      - type: "custom:button-card"
+        entity: input_select.remote
+        hold_action: none
+        tap_action:
+          action: call-service
+          service: input_select.set_options
+          service_data:
+            entity_id: input_select.remote
+            options: "RADIO"
+        name: RADIO
+        show_icon: false
+        styles:
+          card:
+            - background-color: '[[ if(input_select.remote == "RADIO", "gray", "rgba(56, 60, 69, 1)") ]]'
+            - border-radius: 20px
+            - border-style: solid
+            - border-width: 3px
+            - border-color: rgba(255, 125, 125,1)
+#--------------------------------------------------------------------------------------------------
   - type: custom:state-switch
     entity: input_select.remote
     states:
@@ -98,5 +101,4 @@ cards:
 
       RADIO:
         !include remote_radio.yaml
-
 ###################################################################################################
