@@ -123,5 +123,4 @@ decluttering_templates:
 #------------------------------------------------------------------------------------------
 views:
   - !include lovelace/remote_navigation.yaml
-  - !include lovelace/test1.yaml
   - !include lovelace/mediaplayer.yaml
