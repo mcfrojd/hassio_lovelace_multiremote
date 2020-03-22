@@ -1,13 +1,127 @@
-title: Home Control Panel
-resources:
-  - url: /local/community/lovelace-card-tools/card-tools.js
-    type: module
-  - url: /local/community/lovelace-layout-card/layout-card.js
-    type: module
-  - url: /local/community/lovelace-state-switch/state-switch.js
-    type: module
-  - url: /local/community/button-card/button-card.js
-    type: module
+title: Remote Control Interface
 
+decluttering_templates:
+##################################################################################
+# button_text
+##################################################################################
+  button_text:
+    default:
+    card:
+      type: "custom:button-card"
+      entity: input_select.remote
+      name: '[[name]]'
+      show_icon: false
+      tap_action:
+        action: call-service
+        service: input_select.set_options
+        service_data:
+          entity_id: input_select.remote
+          options: "[[name]]"
+      styles:
+        card:
+          - background-color: >
+              [[[
+                if (states['input_select.remote'].state == "[[name]]")
+                  return "[[background_active]]";
+                return "rgba(56, 60, 69, 1)";
+              ]]]
+          - border-radius: 20px
+          - border-style: solid
+          - border-width: 3px
+          - border-color: '[[border]]'
+##################################################################################
+# label_image
+##################################################################################
+  label_image:
+    default:
+      - height: 75
+    card:
+      type: custom:button-card
+      color_type: label-card
+      show_entity_picture: true
+      entity_picture: '/local/lovelace/remote/[[image]]'
+      styles:
+        card:
+          - background-color: rgba(56,60,69,1)
+          - border-radius: 20px
+          - border-style: solid
+          - border-width: 3px
+          - border-color: >
+              [[[
+                if (states['media_player.shield'].state == "off")
+                  return "[[border_off]]";
+                if (states['sensor.shield_app'].state == "[[name]]")
+                  return "[[border_active]]";
+                return "[[border_on]]";
+              ]]]
+          - height: '[[height]]px'
+          - padding: 5px
+        entity_picture:
+          - height: 100%
+          - width: 100%
+##################################################################################
+# button_image
+##################################################################################
+  button_image:
+    default:
+    card:
+      type: custom:button-card
+      name: '[[name]]'
+      entity: '[[entity]]'
+      show_name: false
+      show_entity_picture: true
+      entity_picture: '/local/lovelace/remote/[[image]]'
+      tap_action:
+        action: call-service
+        service: '[[entity]]'
+      styles:
+        card:
+          - background-color: rgba(56,60,69,1)
+          - border-radius: 20px
+          - border-style: solid
+          - border-width: 3px
+          - border-color: >
+              [[[
+                if (states['media_player.shield'].state == "off")
+                  return "[[border_off]]";
+                if (states['sensor.shield_app'].state == "[[name]]")
+                  return "[[border_active]]";
+                return "[[border_on]]";
+              ]]]
+          - height: 75px
+          - padding: 5px
+        entity_picture:
+          - height: 100%
+          - width: 100%
+##################################################################################
+# Button for remote icon and text
+##################################################################################
+  button_icon_and_text:
+    default:
+    card:
+      type: "custom:button-card"
+      entity: '[[entity]]'
+      icon: 'mdi:[[icon]]'
+      name: '[[name]]'
+      tap_action: '[[tap_action]]'
+      styles:
+        card:
+          - background-color: rgba(56,60,69,1)
+          - border-radius: 20px
+          - border-style: solid
+          - border-width: 3px
+          - border-color: >
+              [[[
+                if (states['media_player.shield'].state == "off")
+                  return "[[border_off]]";
+                if (states['sensor.shield_app'].state == "[[name]]")
+                  return "[[border_active]]";
+                return "[[border_on]]";
+              ]]]
+          - height: 75px
+          - padding: 5px
+#------------------------------------------------------------------------------------------
 views:
   - !include lovelace/remote_navigation.yaml
+  - !include lovelace/test1.yaml
+  - !include lovelace/mediaplayer.yaml
