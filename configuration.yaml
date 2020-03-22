@@ -1,11 +1,10 @@
 homeassistant:
-  name: Hemma
+  name: Remote Dev
   latitude: !secret latitude
   longitude: !secret longitude
   elevation: 102
   unit_system: metric
   time_zone: Europe/Stockholm
-  # temperature_unit: C
   packages: !include_dir_named packages
 
 http:
@@ -13,6 +12,18 @@ http:
 
 lovelace:
   mode: yaml
+  resources:
+    - url: /local/community/lovelace-card-tools/card-tools.js
+      type: module
+    - url: /local/community/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /local/community/lovelace-state-switch/state-switch.js
+      type: module
+    - url: /local/community/button-card/button-card.js
+      type: module
+    - url: /local/community/decluttering-card/decluttering-card.js
+      type: module
+
 
 config:
 
@@ -32,6 +43,3 @@ system_health:
 
 hacs:
   token: !secret my_github_access_token
-  # python_script: true
-  # theme: true
-  
