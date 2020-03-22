@@ -1,0 +1,61 @@
+---
+############################################################################
+# Component WebOS
+############################################################################
+webostv:
+  host: !secret webos_host
+  name: TV Vardagsrum
+  turn_on_action:
+    service: wake_on_lan.send_magic_packet
+    data:
+      mac: !secret webos_mac
+  customize:
+    sources:
+      - 'Tivo TV'
+      - 'Spel'
+      - 'Dator'
+      - 'HDMI 1'
+
+############################################################################
+# Wake On Lan
+############################################################################
+wake_on_lan:
+
+############################################################################
+## Customizations
+############################################################################
+homeassistant:
+  customize:
+    media_player.tv_vardagsrum:
+      device_class: tv
+
+############################################################################
+## Sensors
+############################################################################
+sensor:
+  - platform: template
+    sensors:
+      tv_sound_output:
+        friendly_name: "TV Ljudutgång"
+        value_template: "{{state_attr('media_player.tv_vardagsrum','sound_output')|replace('external_optical', 'SONOS PLAYBAR')|replace('lineout', 'HÖRLURAR')|replace('headphone', 'HÖRLURAR')}}"
+        icon_template: >-
+          {% if is_state('sensor.tv_sound_output','HÖRLURAR') %}
+            mdi:headphones
+          {% elif is_state('sensor.tv_sound_output','None') %}
+            mdi:speaker-off
+          {% else %}
+            mdi:speaker-wireless
+          {% endif %}
+
+      tv_input:
+        friendly_name: "TV Bild Ingång"
+        value_template: "{{state_attr('media_player.tv_vardagsrum','source')}}"
+        icon_template: >-
+          {% if is_state('sensor.tv_input', 'Tivo TV') %}
+            mdi:television
+          {% elif is_state('sensor.tv_input', 'None') %}
+            mdi:television-off
+          {% else %}
+            mdi:video-input-hdmi
+          {% endif %}
+
