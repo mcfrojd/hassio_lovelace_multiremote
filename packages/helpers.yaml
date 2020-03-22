@@ -1,7 +1,8 @@
 ---
 ############################################################################################
-## input_select.remote
-## (A entity thats needed for the navigations buttons to change color when active)
+##                                  input_select.remote
+##
+##    An entity thats needed for the top navigations buttons to change color when active
 ############################################################################################
 input_select:
   remote:
@@ -12,3 +13,16 @@ input_select:
       - CHANNELS
       - RADIO
     initial: SHIELD
+
+############################################################################################
+##                                sensor.shield_app
+##
+##          Sensor used to set active color on the current running app on the shield
+############################################################################################
+sensor:
+  - platform: template
+    sensors:
+      shield_app:
+        friendly_name: "Shield App"
+        value_template: "{{ state_attr('media_player.shield', 'app_name') }}"
+############################################################################################
