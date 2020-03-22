@@ -1,8 +1,11 @@
 ---
 ###################################################################################################
-## Lovelace View - remote (2020-03-17 updated to remove old card-modder and change to button-card)
+##  Lovelace View - remote_navigation
+##
+##  2020-03-17 updated to remove old card-modder and change to button-card
+##  2020-03-20 cleanup with decluttering-card
 ###################################################################################################
-title: Remote
+path: remote
 icon: mdi:remote
 cards:
 ###################################################################################################
@@ -10,95 +13,42 @@ cards:
 ###################################################################################################
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
-        entity: input_select.remote
-        hold_action: none
-        tap_action:
-          action: call-service
-          service: input_select.set_options
-          service_data:
-            entity_id: input_select.remote
-            options: "TIVO"
-        name: TIVO
-        show_icon: false
-        styles:
-          card:
-            - background-color: '[[ if(input_select.remote == "TIVO", "gray", "rgba(56, 60, 69, 1)") ]]'
-            - border-radius: 20px
-            - border-style: solid
-            - border-width: 3px
-            - border-color: rgba(255, 125, 125,1)
-#--------------------------------------------------------------------------------------------------
-      - type: "custom:button-card"
-        entity: input_select.remote
-        hold_action: none
-        tap_action:
-          action: call-service
-          service: input_select.set_options
-          service_data:
-            entity_id: input_select.remote
-            options: "SHIELD"
-        name: SHIELD
-        show_icon: false
-        styles:
-          card:
-            - background-color: '[[ if(input_select.remote == "SHIELD", "gray", "rgba(56, 60, 69, 1)") ]]'
-            - border-radius: 20px
-            - border-style: solid
-            - border-width: 3px
-            - border-color: rgba(255, 125, 125,1)
-#--------------------------------------------------------------------------------------------------
-      - type: "custom:button-card"
-        entity: input_select.remote
-        hold_action: none
-        tap_action:
-          action: call-service
-          service: input_select.set_options
-          service_data:
-            entity_id: input_select.remote
-            options: "CHANNELS"
-        name: CHANNELS
-        show_icon: false
-        styles:
-          card:
-            - background-color: '[[ if(input_select.remote == "CHANNELS", "gray", "rgba(56, 60, 69, 1)") ]]'
-            - border-radius: 20px
-            - border-style: solid
-            - border-width: 3px
-            - border-color: rgba(255, 125, 125,1)
-#--------------------------------------------------------------------------------------------------
-      - type: "custom:button-card"
-        entity: input_select.remote
-        hold_action: none
-        tap_action:
-          action: call-service
-          service: input_select.set_options
-          service_data:
-            entity_id: input_select.remote
-            options: "RADIO"
-        name: RADIO
-        show_icon: false
-        styles:
-          card:
-            - background-color: '[[ if(input_select.remote == "RADIO", "gray", "rgba(56, 60, 69, 1)") ]]'
-            - border-radius: 20px
-            - border-style: solid
-            - border-width: 3px
-            - border-color: rgba(255, 125, 125,1)
-#--------------------------------------------------------------------------------------------------
+      - type: custom:decluttering-card
+        template: button_text
+        variables:
+          - name: TIVO
+          - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+          - background_active: gray
+      - type: custom:decluttering-card
+        template: button_text
+        variables:
+          - name: SHIELD
+          - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+          - background_active: gray
+      - type: custom:decluttering-card
+        template: button_text
+        variables:
+          - name: CHANNELS
+          - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+          - background_active: gray
+      - type: custom:decluttering-card
+        template: button_text
+        variables:
+          - name: RADIO
+          - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+          - background_active: gray
+
+###################################################################################################
+## Include lovelace file depending on what button that was pressed above.
+###################################################################################################
   - type: custom:state-switch
     entity: input_select.remote
     states:
-
       TIVO:
         !include remote_tivo.yaml
-
       SHIELD:
         !include remote_shield.yaml
-
       CHANNELS:
         !include remote_channels.yaml
-
       RADIO:
         !include remote_radio.yaml
-###################################################################################################

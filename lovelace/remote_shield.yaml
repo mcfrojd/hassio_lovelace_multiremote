@@ -1,6 +1,6 @@
 ---
 ###################################################################################################
-# Nvidia Shiled Remote
+# Nvidia Shield Remote
 ###################################################################################################
 # Top row - Nvidia Shield Logo
 ###################################################################################################
@@ -12,379 +12,249 @@
         cards:
           - type: vertical-stack
             cards:
-              - type: "custom:button-card"
-                color_type: label-card
-                show_entity_picture: true
-                entity_picture: /local/lovelace/remote/shield_logo.png
-                styles:
-                  card:
-                    - background-color: rgba(56,60,69,1)
-                    - border-radius: 20px
-                    - border-style: solid
-                    - border-width: 3px
-                    - border-color: >
-                        [[[
-                          if (states['media_player.shield'].state == "off")
-                            return "rgba(56,60,69,1)";
-                          return "rgba(118,185,0,1)";
-                        ]]]
-                    - height: 75px
-                    - padding: 5px
-                  entity_picture:
-                    - height: 80%
-                    - width: 90%
-                    - filter: >
-                        [[[
-                          if (states['media_player.shield'].state == "off")
-                            return "grayscale(100%)";
-                          return "grayscale(0%)";
-                        ]]]                      
-# ###################################################################################################
-# ## SHIELD CONTROLLER - HEADER - SHIELD LOGO
-# ###################################################################################################
-#         type: custom:layout-card
-#         layout: vertical
-#         cards:
-#           - type: horizontal-stack
-#             cards:
-#               - type: custom:card-modder
-#                 card:
-#                   type: picture
-#                   image: /local/lovelace/remote/shield_logo.png
-#                 style:
-#                   padding: 10px 10px 10px 10px
-#                   border-radius: 20px
-#                   background-color: rgba(56,60,69,1)
-#                   border: solid 3px rgba(118,185,0,1)
-#                   box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 1 - 5 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:youtube
-                  name: YOUTUBE
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "am start -a android.intent.action.VIEW -d -n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:kodi
-                  name: KODI
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "am start -a android.intent.action.VIEW -d -n org.xbmc.kodi/.Splash"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:twitch
-                  name: TWITCH
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "am start -a android.intent.action.VIEW -d -n tv.twitch.android.app/tv.twitch.android.apps.TwitchActivity"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:netflix
-                  name: NETFLIX
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "am start -a android.intent.action.VIEW -d -n com.netflix.ninja/.MainActivity"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:youtube
-                  name: TV4PLAY
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "am start -a android.intent.action.VIEW -d -n se.tv4.tv4playtab/se.tv4.tv4play.startup.SplashActivity"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 2 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:power
-                  name: "ON"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: POWER
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-up-bold
-                  name: "UP"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: UP
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:power-off
-                  name: "OFF"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: SLEEP
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 4 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-left-bold
-                  name: "LEFT"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: LEFT
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:camera-control
-                  name: "ENTER"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: ENTER
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-right-bold
-                  name: "RIGHT"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: RIGHT
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 5 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:backburger
-                  name: "BACK"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: BACK
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-down-bold
-                  name: "DOWN"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: DOWN
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:home-circle
-                  name: "HOME"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: HOME
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## SHIELD - ROW 6 - 3 BUTTONS (ADB CONTROLLED + CUSTOM COMPONENT - ANDROIDTV)
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:play
-                  name: "PLAY"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "input keyevent 126"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:pause
-                  name: "PAUSE"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "input keyevent 127"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:stop
-                  name: "STOP"
-                  entity: media_player.shield
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: androidtv.adb_command
-                    service_data:
-                      entity_id: media_player.shield
-                      command: "input keyevent 86"
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(118,185,0,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+              - type: custom:decluttering-card
+                template: button_image
+                variables:
+                  - image: shield_logo.png
+                  - border_on: rgb(118,185,0)                     # Shield Border "on" color green
+                  - border_off: rgb(56,60,69)                     # gray "off" color
+###################################################################################################
+# 2 row - 3 App Buttons using template: button_image
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: Youtube
+                    - entity: script.remote_start_app_youtube
+                    - image: tv_youtube2.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: Kodi
+                    - entity: script.remote_start_app_kodi
+                    - image: tv_kodi.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: Twitch
+                    - entity: script.remote_start_app_twitch
+                    - image: tv_twitch.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+###################################################################################################
+# 3 row - 3 App Buttons using template: button_image
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: Netflix
+                    - entity: script.remote_start_app_netflix
+                    - image: tv_netflix.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: C More
+                    - entity: script.remote_start_app_cmore
+                    - image: tv_cmore.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+                - type: custom:decluttering-card
+                  template: button_image
+                  variables:
+                    - name: SVT Play
+                    - entity: script.remote_start_app_svtplay
+                    - image: tv_svtplay.png
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - border_active: rgb(255,0,0)                 # Border "active" color - red
+###################################################################################################
+# 4 row - 3 Navigation Buttons using template: button_icon_and_text
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'ON'
+                    - icon: power
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: MENU
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'UPP'
+                    - icon: arrow-up-bold
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: UP
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'OFF'
+                    - icon: power-off
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: SLEEP
+###################################################################################################
+# 5 row - 3 Navigation Buttons using template: button_icon_and_text
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'VÄNSTER'
+                    - icon: arrow-left-bold
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: LEFT
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'ENTER'
+                    - icon: camera-control
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: ENTER
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'HÖGER'
+                    - icon: arrow-right-bold
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: RIGHT
+###################################################################################################
+# 6 row - 3 Navigation Buttons using template: button_icon_and_text
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'BACK'
+                    - icon: backburger
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: BACK
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'NER'
+                    - icon: arrow-down-bold
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: DOWN
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'HOME'
+                    - icon: home-circle
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: HOME
+###################################################################################################
+# 7 row - 3 Navigation Buttons using template: button_icon_and_text
+###################################################################################################
+              - type: horizontal-stack
+                cards:
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'PLAY'
+                    - icon: play
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: "input keyevent 126"
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'PAUSE'
+                    - icon: pause
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: "input keyevent 127"
+                - type: custom:decluttering-card
+                  template: button_icon_and_text
+                  variables:
+                    - name: 'STOP'
+                    - icon: stop
+                    - border_on: rgb(118,185,0)                   # Shield Border "on" color green
+                    - border_off: rgb(56,60,69)                   # Border "off color - gray
+                    - tap_action:
+                        action: call-service
+                        service: androidtv.adb_command
+                        service_data:
+                          entity_id: media_player.shield
+                          command: "input keyevent 86"

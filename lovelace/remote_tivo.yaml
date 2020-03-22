@@ -1,354 +1,261 @@
+---
 ###################################################################################################
-## TIVO - SONOS CONTROLLER - HEADER - IMAGE WITH VOLUME AND TV CHANNEL
+## TIVO, SONOS & LG REMOTE CONTROLLER
+###################################################################################################
+# Top Row - TIVO Box logo
 ###################################################################################################
         type: custom:layout-card
         layout: vertical
         cards:
+          - type: custom:decluttering-card
+            template: label_image
+            variables:
+              - image: tivo_tivobox.png
+              - height: 160
+              - border_on: rgb(0,153,204)                           # Tivo Border "on" color blue
+###################################################################################################
+# 1. Button row (1 sonos + 3 tivo)
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: picture-elements
-                  image: /local/lovelace/remote/tivo_tivobox.png
-                  elements:
-                    - type: state-label
-                      entity: sensor.sonos_volume_level
-                      prefix: 'Volume - '
-                      tap_action: none
-                      hold_action: none
-                      style: {color: white, left: 14%, top: 25%}
-                    - type: state-label
-                      entity: sensor.kanal
-                      prefix: 'Channel - '
-                      tap_action: none
-                      hold_action: none
-                      style: {color: white, left: 87%, top: 25%}
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-##-------------------------------------------------------------------------------------------------
-## TIVO - ROW 2 - 4 BUTTONS
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/tivo_sonos_logo.png
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/tivo_comhem_logo.png
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-up-bold
-                  name: UP
-                  entity: switch.tivo_up
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: switch.turn_on
-                    service_data:
-                      entity_id: switch.tivo_up
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:power-standby
-                  name: "TV ON/OFF"
-                  entity: switch.tv_power
-                  hold_action: none
-                  tap_action:
-                    action: toggle
-                    service: switch.tv_power
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-##-------------------------------------------------------------------------------------------------
-## TIVO - ROW 3 - 4 BUTTONS
-##-------------------------------------------------------------------------------------------------
-          - type: horizontal-stack
-            cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-plus
-                  name: VOLUME
-                  entity: media_player.sonos_living_room
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'VOLYM'
+                - icon: volume-plus
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.volume_up
                     service_data:
                       entity_id: media_player.sonos_living_room
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-left-bold
-                  name: LEFT
-                  entity: switch.tivo_left
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'TV OFF'
+                - icon: power-standby
+                - border_on: rgb(204,0,102)                         # LG Border "on" color - redish
+                - tap_action:
+                    action: call-service
+                    service: media_player.turn_off
+                    service_data:
+                      entity_id: media_player.tv_vardagsrum
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'UP'
+                # - entity: switch.tivo_up
+                - icon: arrow-up-bold
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
-                      entity_id: switch.tivo_left
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:camera-control
-                  name: ENTER
-                  entity: switch.tivo_select
-                  hold_action: none
-                  tap_action:
+                      entity_id: switch.tivo_up
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'TV ON'
+                - icon: power-standby
+                - border_on: rgb(204,0,102)                         # LG Border "on" color - redish
+                - tap_action:
                     action: call-service
-                    service: switch.turn_on
+                    service: media_player.turn_on
                     service_data:
-                      entity_id: switch.tivo_select
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-right-bold
-                  name: RIGHT
-                  entity: switch.tivo_right
-                  hold_action: none
-                  tap_action:
-                    action: call-service
-                    service: switch.turn_on
-                    service_data:
-                      entity_id: switch.tivo_right
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-##-------------------------------------------------------------------------------------------------
-## TIVO - ROW 4 - 4 BUTTONS
-##-------------------------------------------------------------------------------------------------
+                      entity_id: media_player.tv_vardagsrum
+###################################################################################################
+# 2. Button row (1 sonos + 3 tivo)
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-minus
-                  name: VOLYM
-                  entity: media_player.sonos_living_room
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'VOLYM'
+                - icon: volume-minus
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.volume_down
                     service_data:
                       entity_id: media_player.sonos_living_room
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:minus
-                  name: CHANNEL
-                  entity: switch.tivo_channel_down
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'LEFT'
+                # - entity: switch.tivo_up
+                - icon: arrow-left-bold
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
-                      entity_id: switch.tivo_channel_down
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:arrow-down-bold
-                  name: DOWN
-                  entity: switch.tivo_down
-                  hold_action: none
-                  tap_action:
+                      entity_id: switch.tivo_left
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'ENTER'
+                # - entity: switch.tivo_up
+                - icon: camera-control
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
-                      entity_id: switch.tivo_down
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:plus
-                  name: CHANNEL
-                  entity: switch.tivo_channel_up
-                  hold_action: none
-                  tap_action:
+                      entity_id: switch.tivo_select
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'RIGHT'
+                # - entity: switch.tv_power
+                - icon: arrow-right-bold
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
-                      entity_id: switch.tivo_channel_up
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-##-------------------------------------------------------------------------------------------------
-## TIVO - ROW 5 - 4 BUTTONS
-##-------------------------------------------------------------------------------------------------
+                      entity_id: switch.tivo_right
+###################################################################################################
+# 3. Button row (1 sonos + 3 tivo)
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-mute
-                  name: MUTE
-                  entity: media_player.sonos_living_room
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'MUTE'
+                - icon: volume-mute
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.volume_mute
                     service_data:
                       entity_id: media_player.sonos_living_room
                       is_volume_muted: true
-                  hold_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'CHANNEL'
+                # - entity: switch.tivo_up
+                - icon: minus
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_channel_down
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'DOWN'
+                # - entity: switch.tivo_up
+                - icon: arrow-down-bold
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_down
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'CHANNEL'
+                # - entity: switch.tv_power
+                - icon: plus
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
+                    action: call-service
+                    service: switch.turn_on
+                    service_data:
+                      entity_id: switch.tivo_channel_up
+###################################################################################################
+# 4. Button row (1 sonos + 3 tivo)
+###################################################################################################
+          - type: horizontal-stack
+            cards:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'UNMUTE'
+                - entity: media_player.sonos_living_room
+                - icon: volume-high
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.volume_mute
                     service_data:
                       entity_id: media_player.sonos_living_room
                       is_volume_muted: false
-                style:
-                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:television
-                  name: TIVO
-                  entity: switch.tivo_tivo
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'TIVO'
+                # - entity: switch.tivo_up
+                - icon: television
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
                       entity_id: switch.tivo_tivo
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:format-list-bulleted
-                  name: EPG
-                  entity: switch.tivo_epg
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'EPG'
+                # - entity: switch.tivo_up
+                - icon: format-list-bulleted
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
                       entity_id: switch.tivo_epg
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:television-classic
-                  name: LIVE TV
-                  entity: switch.tivo_live_tv
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'LIVE TV'
+                # - entity: switch.tv_power
+                - icon: television-classic
+                - border_on: rgb(0,153,204)                         # Tivo Border "on" color blue
+                - tap_action:
                     action: call-service
                     service: switch.turn_on
                     service_data:
                       entity_id: switch.tivo_live_tv
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-##-------------------------------------------------------------------------------------------------
-## TIVO - ROW 6 - 4 BUTTONS
-##-------------------------------------------------------------------------------------------------
+###################################################################################################
+# 5. Button row (4 LG)
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:gamepad-variant
-                  name: "HDMI 1"
-                  entity: switch.tv_hdmi1
-                  hold_action: none
-                  tap_action:
-                    action: toggle
-                    service: switch.tv_hdmi1
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:laptop-mac
-                  name: "HDMI 2"
-                  entity: switch.tv_hdmi2
-                  hold_action: none
-                  tap_action:
-                    action: toggle
-                    service: switch.tv_hdmi2
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:television-classic
-                  name: "HDMI 3"
-                  entity: switch.tv_hdmi3
-                  hold_action: none
-                  tap_action:
-                    action: toggle
-                    service: switch.tv_hdmi3
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:apple
-                  name: "HDMI 4"
-                  entity: switch.tv_hdmi4
-                  hold_action: none
-                  tap_action:
-                    action: toggle
-                    service: switch.tv_hdmi4
-                style:
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(40,40,40,1)
+            - type: custom:decluttering-card
+              template: label_image
+              variables:
+                - image: tv_lg_logo.png
+                - border_on: rgb(204,0,102)                         # Border "on" color - redish
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'HDMI 2'
+                - icon: laptop-mac
+                - border_on: rgb(204,0,102)                         # Border "on" color - redish
+                - tap_action:
+                    action: call-service
+                    service: script.tv_living_room_input_dator
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'HDMI 3'
+                - icon: gamepad-variant
+                - border_on: rgb(204,0,102)                         # Border "on" color - redish
+                - tap_action:
+                    action: call-service
+                    service: script.tv_living_room_input_spel
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'HDMI 4'
+                - icon: television-classic
+                - border_on: rgb(204,0,102)                         # Border "on" color - redish
+                - tap_action:
+                    action: call-service
+                    service: script.tv_living_room_input_tv
