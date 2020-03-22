@@ -1,0 +1,232 @@
+---
+########################################################################################################################
+# Remote Control Scripts
+########################################################################################################################
+script:
+#-----------------------------------------------------------
+# TV on & off
+#-----------------------------------------------------------
+  tv_living_room_on:
+    sequence:
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+  tv_living_room_off:
+    sequence:
+      - service: media_player.turn_off
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+#-----------------------------------------------------------
+# TV Input (choose hdmi)
+#-----------------------------------------------------------
+  tv_living_room_input_tv:
+    sequence:
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Tivo TV'
+      - service: notify.tv_vardagsrum
+        data:
+          message: 'Bildingång TV aktiverad!'
+
+  tv_living_room_input_spel:
+    sequence:
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+      - service: notify.tv_vardagsrum
+        data:
+          message: 'Bildingång SPEL aktiverad!'
+
+  tv_living_room_input_dator:
+    sequence:
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Dator'
+      - service: notify.tv_vardagsrum
+        data:
+          message: 'Bildingång DATOR aktiverad!'
+
+#-----------------------------------------------------------
+# Macro script to start Youtube
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_youtube:
+    alias: Starta Youtube
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the Youtube App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n com.google.android.youtube.tv/com.google.android.apps.youtube.tv.activity.ShellActivity"
+
+#-----------------------------------------------------------
+# Macro script to start Kodi
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_kodi:
+    alias: Starta Kodi
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the Kodi App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n org.xbmc.kodi/.Splash"
+
+#-----------------------------------------------------------
+# Macro script to start Twitch
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_twitch:
+    alias: Starta Twitch
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the Twitch App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n tv.twitch.android.app/tv.twitch.android.apps.TwitchActivity"
+
+#-----------------------------------------------------------
+# Macro script to start Netflix
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_netflix:
+    alias: Starta Netflix
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the Netflix App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n com.netflix.ninja/.MainActivity"
+
+#-----------------------------------------------------------
+# Macro script to start CMore
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_cmore:
+    alias: Starta CMore
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the CMore App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n se.cmore.bonnier/.androidtv.splash.TvConfigurationActivity"
+
+#-----------------------------------------------------------
+# Macro script to start SVT Play
+# One click to start even if all devices is off
+#-----------------------------------------------------------
+  remote_start_app_svtplay:
+    alias: Starta SVT Play
+    sequence:
+      # Turn on the tv (sends a wake on lan that do nothing if tv allready on)
+      - service: media_player.turn_on
+        data:
+          entity_id: media_player.tv_vardagsrum
+
+      # Select the right input (hdmi) to show the Nvidia Shield TV
+      - service: media_player.select_source
+        data:
+          entity_id: media_player.tv_vardagsrum
+          source: 'Spel'
+
+      # Wake up the Nvidia Shield if turned off and go to homescreen, if on, wake up from screensaver
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: MENU
+
+      # Start the SVT Play App
+      - service: androidtv.adb_command
+        data:
+          entity_id: media_player.shield
+          command: "am start -a android.intent.action.VIEW -d -n se.svt.android.svtplay/se.svt.svtplay.tv.ui.StartupActivity"
