@@ -1,0 +1,14 @@
+---
+############################################################################################
+## input_select.remote
+## (A entity thats needed for the navigations buttons to change color when active)
+############################################################################################
+input_select:
+  remote:
+    name: Select Remote Controll
+    options:
+      - TIVO
+      - SHIELD
+      - CHANNELS
+      - RADIO
+    initial: SHIELD
