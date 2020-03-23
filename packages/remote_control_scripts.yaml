@@ -1,56 +1,8 @@
 ---
 ########################################################################################################################
-# Remote Control Scripts
+# Remote Control Macro Scripts
 ########################################################################################################################
 script:
-#-----------------------------------------------------------
-# TV on & off
-#-----------------------------------------------------------
-  tv_living_room_on:
-    sequence:
-      - service: media_player.turn_on
-        data:
-          entity_id: media_player.tv_vardagsrum
-
-  tv_living_room_off:
-    sequence:
-      - service: media_player.turn_off
-        data:
-          entity_id: media_player.tv_vardagsrum
-
-#-----------------------------------------------------------
-# TV Input (choose hdmi)
-#-----------------------------------------------------------
-  tv_living_room_input_tv:
-    sequence:
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.tv_vardagsrum
-          source: 'Tivo TV'
-      - service: notify.tv_vardagsrum
-        data:
-          message: 'Bildingång TV aktiverad!'
-
-  tv_living_room_input_spel:
-    sequence:
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.tv_vardagsrum
-          source: 'Spel'
-      - service: notify.tv_vardagsrum
-        data:
-          message: 'Bildingång SPEL aktiverad!'
-
-  tv_living_room_input_dator:
-    sequence:
-      - service: media_player.select_source
-        data:
-          entity_id: media_player.tv_vardagsrum
-          source: 'Dator'
-      - service: notify.tv_vardagsrum
-        data:
-          message: 'Bildingång DATOR aktiverad!'
-
 #-----------------------------------------------------------
 # Macro script to start Youtube
 # One click to start even if all devices is off
