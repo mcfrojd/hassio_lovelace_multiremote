@@ -1,10 +1,10 @@
 ---
+input_select:
 ############################################################################################
 ##                                  input_select.remote
 ##
 ##    An entity thats needed for the top navigations buttons to change color when active
 ############################################################################################
-input_select:
   remote:
     name: Select Remote Controll
     options:
@@ -14,12 +14,12 @@ input_select:
       - RADIO
     initial: SHIELD
 
+sensor:
 ############################################################################################
 ##                                sensor.shield_app
 ##
 ##          Sensor used to set active color on the current running app on the shield
 ############################################################################################
-sensor:
   - platform: template
     sensors:
       shield_app:
