@@ -10,6 +10,17 @@ homeassistant:
 http:
   base_url: !secret base_url
 
+hacs:
+  token: !secret my_github_access_token
+
+discovery:
+  ignore:
+    - google_cast
+    - apple_tv
+    - ikea_tradfri
+    - tellstick
+    - esphome
+
 lovelace:
   mode: yaml
   resources:
@@ -23,23 +34,3 @@ lovelace:
       type: module
     - url: /local/community/decluttering-card/decluttering-card.js
       type: module
-
-
-config:
-
-discovery:
-  ignore:
-    - google_cast
-    - apple_tv
-    - ikea_tradfri
-    - tellstick
-    - esphome
-
-history:
-
-logbook:
-
-system_health:
-
-hacs:
-  token: !secret my_github_access_token
