@@ -17,7 +17,6 @@
                 variables:
                   - image: shield_logo.png
                   - border_on: rgb(118,185,0)                     # Shield Border "on" color green
-                  - border_off: rgb(56,60,69)                     # gray "off" color
 ###################################################################################################
 # 2 row - 3 App Buttons using template: button_image
 ###################################################################################################
@@ -27,29 +26,32 @@
                   template: button_image
                   variables:
                     - name: Youtube
-                    - entity: script.remote_start_app_youtube
                     - image: tv_youtube2.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_youtube
                 - type: custom:decluttering-card
                   template: button_image
                   variables:
                     - name: Kodi
-                    - entity: script.remote_start_app_kodi
                     - image: tv_kodi.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_kodi
                 - type: custom:decluttering-card
                   template: button_image
                   variables:
                     - name: Twitch
-                    - entity: script.remote_start_app_twitch
                     - image: tv_twitch.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_twitch
 ###################################################################################################
 # 3 row - 3 App Buttons using template: button_image
 ###################################################################################################
@@ -59,29 +61,32 @@
                   template: button_image
                   variables:
                     - name: Netflix
-                    - entity: script.remote_start_app_netflix
                     - image: tv_netflix.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_netflix
                 - type: custom:decluttering-card
                   template: button_image
                   variables:
                     - name: C More
-                    - entity: script.remote_start_app_cmore
                     - image: tv_cmore.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_cmore
                 - type: custom:decluttering-card
                   template: button_image
                   variables:
                     - name: SVT Play
-                    - entity: script.remote_start_app_svtplay
                     - image: tv_svtplay.png
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - border_active: rgb(255,0,0)                 # Border "active" color - red
+                    - tap_action:
+                        action: call-service
+                        service: script.remote_start_app_svtplay
 ###################################################################################################
 # 4 row - 3 Navigation Buttons using template: button_icon_and_text
 ###################################################################################################
@@ -93,7 +98,6 @@
                     - name: 'ON'
                     - icon: power
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -106,7 +110,6 @@
                     - name: 'UPP'
                     - icon: arrow-up-bold
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -119,7 +122,6 @@
                     - name: 'OFF'
                     - icon: power-off
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -137,7 +139,6 @@
                     - name: 'VÄNSTER'
                     - icon: arrow-left-bold
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -150,7 +151,6 @@
                     - name: 'ENTER'
                     - icon: camera-control
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -163,7 +163,6 @@
                     - name: 'HÖGER'
                     - icon: arrow-right-bold
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -181,7 +180,6 @@
                     - name: 'BACK'
                     - icon: backburger
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -194,7 +192,6 @@
                     - name: 'NER'
                     - icon: arrow-down-bold
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -207,7 +204,6 @@
                     - name: 'HOME'
                     - icon: home-circle
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -225,7 +221,6 @@
                     - name: 'PLAY'
                     - icon: play
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -238,7 +233,6 @@
                     - name: 'PAUSE'
                     - icon: pause
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
@@ -251,7 +245,6 @@
                     - name: 'STOP'
                     - icon: stop
                     - border_on: rgb(118,185,0)                   # Shield Border "on" color green
-                    - border_off: rgb(56,60,69)                   # Border "off color - gray
                     - tap_action:
                         action: call-service
                         service: androidtv.adb_command
