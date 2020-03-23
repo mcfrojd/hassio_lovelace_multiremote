@@ -9,8 +9,10 @@
         max_width: 99%
         cards:
 ###################################################################################################
-# 2 row - 3 App Buttons using template: button_image
+# 2 row - Media_player.tivo
 ###################################################################################################
+          - type: media-control
+            entity: media_player.tivo
 ###################################################################################################
 ## FAVORITE CHANNELS - ROW 1 - 3 BUTTONS - TIVO Box
 ###################################################################################################
@@ -201,5 +203,3 @@
                     service_data:
                       entity_id: media_player.tivo
                       source: VH1
-          - type: media-control
-            entity: media_player.tivo
