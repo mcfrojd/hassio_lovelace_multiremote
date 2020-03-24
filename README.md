@@ -1,11 +1,12 @@
 # McFrojd's Home Assistant Lovelace Multi Remote
-2020-03-24 Rewrite to use some other custom cards and integrations
-2019-03-21 Updated to work with hassio 0.90, adb 0.3.0 and the new androidtv component
+- 2020-03-24 Rewrite to use some other custom cards and integrations
+- 2019-03-21 Updated to work with hassio 0.90, adb 0.3.0 and the new androidtv component
 
 Lovelace example of my multi remote.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="500">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="300">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="300">
 </p>
 
 
