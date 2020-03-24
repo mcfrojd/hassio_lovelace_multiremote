@@ -1,4 +1,5 @@
 # McFrojd's Home Assistant Lovelace Multi Remote
+2020-03-24 Rewrite to use some other custom cards and integrations
 2019-03-21 Updated to work with hassio 0.90, adb 0.3.0 and the new androidtv component
 
 Lovelace example of my multi remote.
@@ -11,30 +12,33 @@ Lovelace example of my multi remote.
 
 ### Lovelace Cards Used:
 
-  - entity-button    | https://www.home-assistant.io/lovelace/entity-button/
   - horizontal-stack | https://www.home-assistant.io/lovelace/horizontal-stack/
-  - picture          | https://www.home-assistant.io/lovelace/picture/
-  - picture-elements | https://www.home-assistant.io/lovelace/picture-elements/
 
-### Custom Cards Used:
+### HACS Plugins (Custom Cards) Used:
 
-  - card-modder            | https://github.com/thomasloven/lovelace-card-modder
   - card-tools             | https://github.com/thomasloven/lovelace-card-tools
-  - compact-custom-header  | https://github.com/maykar/compact-custom-header
   - layout-card            | https://github.com/thomasloven/lovelace-layout-card
   - state-switch           | https://github.com/thomasloven/lovelace-state-switch
+  - button-card            | https://github.com/custom-cards/button-card
+  - decluttering card      | https://github.com/custom-cards/decluttering-card
 
-### Community Hass.io Add-ons Used:
+### Home Assistant Community Add-on Used:
 
 To controll Nvidia Shield TV
   - ADB - Android Debug Bridge | https://github.com/hassio-addons/addon-adb
 
-### Home-Assistant Components Used:
+Also installed on the dev machine (not needed for teh remote)
+  - SSH & Web Terminal  | https://github.com/hassio-addons/addon-ssh
+  - Samba Share         | https://github.com/home-assistant/hassio-addons/tree/master/samba
+  - Visual Studio Code  | https://github.com/hassio-addons/addon-vscode
+
+### HACS Integrations Used:
 
 To controll TIVO Box
-  - TCP Sensor     | https://www.home-assistant.io/components/sensor.tcp/
-  - Telnet Switch  | https://www.home-assistant.io/components/switch.telnet/
-  
+  - Virgin Tivo   | https://github.com/bertbert72/HomeAssistant_VirginTivo
+
+### Home Assistant Integration Used:
+
 To controll SONOS
   - SONOS          | https://www.home-assistant.io/components/sonos/
 
