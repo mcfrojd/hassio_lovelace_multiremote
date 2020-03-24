@@ -1,0 +1,280 @@
+---
+###################################################################################################
+#                               Decluttering Templatest used.
+# button_text
+# label_image
+# button_image
+# button_icon_and_text
+####################################################################################################
+#                                 Bordercolors used (rgb)
+#
+# Nvidia Shield   border_on: rgb(118,185,0)       Border "on" color - green
+# Tivo            border_on: rgb(0,153,204)       Border "on" color - blue
+# Sonos           border_on: rgb(80,120,160)      Border "on" color - grayblue
+# LG              border_on: rgb(204,0,102)       Border "on" color - redish
+# Off state       border_off: rgb(56,60,69)       Border "off color - gray
+# Active state    border_active: rgb(255,0,0)     Border "active" color - red
+###################################################################################################
+id: test_remote
+title: Test Remote
+cards:
+  - type: custom:layout-card
+    layout: vertical
+    min_columns: 1
+    max_columns: 1
+    max_width: 99%
+    cards:
+###################################################################################################
+# 1. button_text
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+          - type: custom:decluttering-card
+            template: button_text
+            variables:
+              - name: TIVO
+              - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+              - background_active: gray
+          - type: custom:decluttering-card
+            template: button_text
+            variables:
+              - name: SHIELD
+              - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+              - background_active: gray
+          - type: custom:decluttering-card
+            template: button_text
+            variables:
+              - name: CHANNELS
+              - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+              - background_active: gray
+          - type: custom:decluttering-card
+            template: button_text
+            variables:
+              - name: RADIO
+              - border: rgba(255, 125, 125,1) # pink(ish) color top nav buttons
+              - background_active: gray
+###################################################################################################
+# 2. label_image
+###################################################################################################
+      - type: custom:decluttering-card
+        template: label_image
+        variables:
+          - image: shield_logo.png
+          - border_on: rgb(118,185,0) # Shield Border "on" color green
+          - border_off: rgb(56,60,69) # gray "off" color
+###################################################################################################
+# 3. label_image
+###################################################################################################
+      - type: custom:decluttering-card
+        template: label_image
+        variables:
+          - image: tivo_tivobox.png
+          - height: 160
+          - border_on: rgb(0,153,204) # Tivo Border "on" color blue
+###################################################################################################
+# 4. label_image
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: label_image
+          variables:
+            - image: tivo_sonos_logo.png
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+        - type: custom:decluttering-card
+          template: label_image
+          variables:
+            - image: tivo_comhem_logo.png
+            - border_on: rgb(40,40,40) # Tivo Border "on" color gray
+        - type: custom:decluttering-card
+          template: label_image
+          variables:
+            - image: shield_logo.png
+            - border_on: rgb(118,185,0) # Shield Border "on" color green
+        - type: custom:decluttering-card
+          template: label_image
+          variables:
+            - image: radio_ytmusic.png
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+###################################################################################################
+# 5. button_image (shield)
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: Netflix
+            - entity: script.remote_start_app_netflix
+            - image: tv_netflix.png
+            - border_on: rgb(118,185,0)   # Shield Border "on" color green
+            - border_off: rgb(56,60,69)   # Border "off color - gray
+            - border_active: rgb(255,0,0) # Border "active" color - red
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: C More
+            - entity: script.remote_start_app_cmore
+            - image: tv_cmore.png
+            - border_on: rgb(118,185,0)   # Shield Border "on" color green
+            - border_off: rgb(56,60,69)   # Border "off color - gray
+            - border_active: rgb(255,0,0) # Border "active" color - red
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: SVT Play
+            - entity: script.remote_start_app_svtplay
+            - image: tv_svtplay.png
+            - border_on: rgb(118,185,0)   # Shield Border "on" color green
+            - border_off: rgb(56,60,69)   # Border "off color - gray
+            - border_active: rgb(255,0,0) # Border "active" color - red
+###################################################################################################
+# 6. button_image (radio)
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: Mix Megapol
+            - entity: script.sonos_radio_mixmegapol
+            - image: radio_mixmegapol.png
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: Rix FM
+            - entity: script.sonos_radio_rixfm
+            - image: radio_rixfm.png
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: NRJ
+            - entity: script.sonos_radio_nrj
+            - image: radio_nrj.png
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+###################################################################################################
+# 6. button_image (channel)
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: SVT 1
+            - entity: script.tivo_channel_svt1
+            - image: tv_svt1.png
+            - border_on: rgb(0,153,204) # Tivo Border "on" color blue
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: SVT 2
+            - entity: script.tivo_channel_svt2
+            - image: tv_svt2.png
+            - border_on: rgb(0,153,204) # Tivo Border "on" color blue
+        - type: custom:decluttering-card
+          template: button_image
+          variables:
+            - name: TV 3
+            - entity: script.tivo_channel_tv3
+            - image: tv_tv3.png
+            - border_on: rgb(0,153,204) # Tivo Border "on" color blue
+###################################################################################################
+# button_icon_text
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'ON'
+            - icon: power
+            - border_on: rgb(118,185,0) # Shield Border "on" color green
+            - tap_action:
+                action: call-service
+                service: androidtv.adb_command
+                service_data:
+                  entity_id: media_player.shield
+                  command: MENU
+            - light_when: 'off'
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'UPP'
+            - icon: arrow-up-bold
+            - border_on: rgb(118,185,0) # Shield Border "on" color green
+            - tap_action:
+                action: call-service
+                service: androidtv.adb_command
+                service_data:
+                  entity_id: media_player.shield
+                  command: UP
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'OFF'
+            - icon: power-off
+            - border_on: rgb(118,185,0) # Shield Border "on" color green
+            - tap_action:
+                action: call-service
+                service: androidtv.adb_command
+                service_data:
+                  entity_id: media_player.shield
+                  command: SLEEP
+###################################################################################################
+# button_icon_text
+###################################################################################################
+      - type: horizontal-stack
+        cards:
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'MUTE'
+            - entity: media_player.sonos_living_room
+            - icon: volume-mute
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+            - tap_action:
+                action: call-service
+                service: media_player.volume_mute
+                service_data:
+                  entity_id: media_player.sonos_living_room
+                is_volume_muted: true
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'UNMUTE'
+            - entity: media_player.sonos_living_room
+            - icon: volume-high
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+            - tap_action:
+                action: call-service
+                service: media_player.volume_mute
+                service_data:
+                  entity_id: media_player.sonos_living_room
+                  is_volume_muted: false
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'VOLYM'
+            - entity: media_player.sonos_living_room
+            - icon: volume-plus
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+            - tap_action:
+                action: call-service
+                service: media_player.volume_up
+                service_data:
+                  entity_id: media_player.sonos_living_room
+        - type: custom:decluttering-card
+          template: button_icon_and_text
+          variables:
+            - name: 'VOLYM'
+            - entity: media_player.sonos_living_room
+            - icon: volume-minus
+            - border_on: rgb(80,120,160) # Sonos Border "on" color
+            - tap_action:
+                action: call-service
+                service: media_player.volume_down
+                service_data:
+                  entity_id: media_player.sonos_living_room
+###################################################################################################
