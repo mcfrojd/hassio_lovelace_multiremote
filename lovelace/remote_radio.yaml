@@ -165,3 +165,55 @@
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: TV
+###################################################################################################
+# Sonos controller
+###################################################################################################
+          - type: horizontal-stack
+            cards:
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'VOLYM'
+                - icon: volume-plus
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
+                    action: call-service
+                    service: media_player.volume_up
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'VOLYM'
+                - icon: volume-minus
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
+                    action: call-service
+                    service: media_player.volume_down
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'MUTE'
+                - icon: volume-mute
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: true
+            - type: custom:decluttering-card
+              template: button_icon_and_text
+              variables:
+                - name: 'UNMUTE'
+                - entity: media_player.sonos_living_room
+                - icon: volume-high
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
+                    action: call-service
+                    service: media_player.volume_mute
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      is_volume_muted: false
