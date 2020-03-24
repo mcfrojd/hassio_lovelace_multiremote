@@ -9,15 +9,16 @@ media_player:
     name: Shield
     adb_server_ip: 127.0.0.1
     adb_server_port: 5037
+    exclude_unnamed_apps: true
     apps:
-      "org.xbmc.kodi": "Kodi"
-      "com.netflix.ninja": "Netflix"
-      "com.spotify.tv.android": "Spotify"
-      "com.google.android.tvlauncher": "Homescreen"
-      "com.google.android.youtube.tv": "Youtube"
-      "tv.twitch.android.app": "Twitch"
-      "se.svt.android.svtplay": "SVT Play"
-      "se.tv4.tv4playtab": "TV4 Play"
-      "se.kanal5play": "Dplay"
-      "com.alexvas.dvr.pro": "TinyCamPro"
-      "se.cmore.bonnier": "C More"
+      org.xbmc.kodi: "Kodi"
+      com.netflix.ninja: "Netflix"
+      com.spotify.tv.android: "Spotify"
+      com.google.android.tvlauncher: "Homescreen"
+      com.google.android.youtube.tv: "Youtube"
+      tv.twitch.android.app: "Twitch"
+      se.svt.android.svtplay: "SVT Play"
+      se.tv4.tv4playtab: "TV4 Play"
+      se.kanal5play: "Dplay"
+      com.alexvas.dvr.pro: "TinyCamPro"
+      se.cmore.bonnier: "C More"
