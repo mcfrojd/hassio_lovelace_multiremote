@@ -1,199 +1,167 @@
+---
 ###################################################################################################
-## RADIO CHANNELS - ROW 1 - 3 BUTTONS (SONOS PLAYBAR PLAYING FAVORITE RADIO SOURCES)
+## TIVO Channel Favorites - REMOTE CONTROLLER
 ###################################################################################################
         type: custom:layout-card
         layout: vertical
+        min_columns: 1
+        max_columns: 1
+        max_width: 99%
         cards:
+###################################################################################################
+# 2 row - Media_player.tivo
+###################################################################################################
+          - type: media-control
+            entity: media_player.sonos_living_room
+###################################################################################################
+## FAVORITE RADIO CHANNELS - ROW 1 - 3 BUTTONS - SONOS Radio
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_mixmegapol.png
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_mixmegapol.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: Mix Megapol Stockholm
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_rixfm.png
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_rixfm.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: RIX FM
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_vinyl.png
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_vinyl.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: Vinyl FM
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## RADIO CHANNELS - ROW 2 - 3 BUTTONS
-##-------------------------------------------------------------------------------------------------
+###################################################################################################
+## FAVORITE RADIO CHANNELS - ROW 1 - 3 BUTTONS - SONOS Radio
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_banditrock.png
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_banditrock.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
-                      source: BANDIT ROCK
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_rockklassiker.png
-                  hold_action: none
-                  tap_action:
+                      source: Bandit
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_rockklassiker.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: Rockklassiker
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: picture
-                  image: /local/lovelace/remote/radio_nrj.png
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_nrj.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: NRJ
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(225,225,40,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-##-------------------------------------------------------------------------------------------------
-## RADIO CHANNELS - ROW 3 - 4 BUTTONS (SONOS PLAYBAR VOLUME CONTROLL AND TV INPUT SOURCE)
-##-------------------------------------------------------------------------------------------------
+###################################################################################################
+## FAVORITE RADIO CHANNELS - ROW 1 - 3 BUTTONS - SONOS Radio
+###################################################################################################
           - type: horizontal-stack
             cards:
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-plus
-                  name: "VOLYM"
-                  entity: media_player.sonos_living_room
-                  hold_action: none
-                  tap_action:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_guldkanalen.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
-                    service: media_player.volume_up
+                    service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-minus
-                  name: "VOLYM"
-                  entity: media_player.sonos_living_room
-                  hold_action: none
-                  tap_action:
+                      source: Guldkanalen
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_lugna_favoriter.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
-                    service: media_player.volume_down
+                    service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:volume-mute
-                  name: "MUTE"
-                  entity: media_player.sonos_living_room
-                  tap_action:
+                      source: Lugna Favoriter
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_star_70.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
-                    service: media_player.volume_mute
+                    service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
-                      is_volume_muted: true
-                  hold_action:
+                      source: Star 70
+###################################################################################################
+## FAVORITE RADIO CHANNELS - ROW 1 - 3 BUTTONS - SONOS Radio
+###################################################################################################
+          - type: horizontal-stack
+            cards:
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_star_80.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
-                    service: media_player.volume_mute
+                    service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
-                      is_volume_muted: false
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: '[[ if(sensor.sonos_muted == "True", "red", "rgba(56, 60, 69, 1)") ]]'
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
-              - type: custom:card-modder
-                card:
-                  type: entity-button
-                  icon: mdi:television-classic
-                  name: "LIVE TV"
-                  entity: switch.tivo_live_tv
-                  hold_action: none
-                  tap_action:
+                      source: Star 80
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_ytmusic.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
                     action: call-service
                     service: media_player.select_source
                     service_data:
                       entity_id: media_player.sonos_living_room
                       source: TV
-                style:
-                  padding: 5px 5px 5px 5px
-                  background-color: rgba(56,60,69,1)
-                  border-radius: 20px
-                  border: solid 3px rgba(80,120,140,1)
-                  box-shadow: 3px 3px rgba(0,0,0,0.4)
+            - type: custom:decluttering-card
+              template: button_image
+              variables:
+                - image: radio_tvinput.png
+                - border_on: rgb(80,120,160) # Sonos Border "on" color
+                - tap_action:
+                    action: call-service
+                    service: media_player.select_source
+                    service_data:
+                      entity_id: media_player.sonos_living_room
+                      source: TV
