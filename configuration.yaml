@@ -21,6 +21,8 @@ discovery:
     - tellstick
     - esphome
 
+config:
+
 lovelace:
   mode: yaml
   resources:
