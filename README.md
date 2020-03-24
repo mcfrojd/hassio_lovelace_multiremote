@@ -5,12 +5,12 @@
 Lovelace example of my multi remote.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="450">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="450">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="420">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="420">
 </p>
 <p align="center">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="450">
-<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="450">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="420">
+<img src="https://raw.githubusercontent.com/mcfrojd/hassio_lovelace_multiremote/master/home_assistant_lovelace_remotes_2.gif" alt="Multiremote" width="420">
 </p>
 
 
