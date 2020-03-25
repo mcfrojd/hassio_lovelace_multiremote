@@ -7,4 +7,4 @@ media_player:
       1:
         name: Tivo
         host: 192.168.111.10
-    channels: !include ../tivo_channel_list.yaml
+    channels: !include ../tivo_channels.yaml
