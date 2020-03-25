@@ -115,4 +115,4 @@ decluttering_templates:
 #------------------------------------------------------------------------------------------
 views:
   - !include lovelace/remote_navigation.yaml
-  - !include lovelace/mediaplayer.yaml
+  # - !include lovelace/mediaplayer.yaml
