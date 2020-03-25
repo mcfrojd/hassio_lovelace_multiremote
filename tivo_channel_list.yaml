@@ -1,0 +1,696 @@
+---
+##############################################################
+##               COMHEM Sweden - channel list               ##
+##                                                          ##
+## Imports from my google sheets (remove top and bottom "") ##
+##            and indent to the shown position              ##
+######1:######################################################
+      1:
+        name: SVT1
+        show: true
+        hd_channel: 21
+        logo: https://new.static.tv.nu/47578019
+      2:
+        name: SVT2
+        show: true
+        hd_channel: 22
+        logo: https://new.static.tv.nu/47578022
+      3:
+        name: TV3
+        show: true
+        hd_channel: 23
+        logo: https://new.static.tv.nu/47578023
+      4:
+        name: TV4
+        show: true
+        hd_channel: 24
+        logo: https://new.static.tv.nu/47578024
+      5:
+        name: Kanal 5
+        show: true
+        hd_channel: 25
+        logo: https://new.static.tv.nu/47578025
+      6:
+        name: TV6
+        show: true
+        hd_channel: 26
+        logo: https://new.static.tv.nu/47578026
+      7:
+        name: Sjuan
+        show: true
+        hd_channel: 27
+        logo: https://new.static.tv.nu/47578027
+      8:
+        name: TV8
+        show: true
+        hd_channel: 28
+        logo: https://new.static.tv.nu/47578028
+      9:
+        name: Kanal 9
+        show: true
+        hd_channel: 29
+        logo: https://new.static.tv.nu/47578029
+      10:
+        name: TV10
+        show: true
+        hd_channel: 19
+        logo: https://new.static.tv.nu/47578030
+      11:
+        name: Kanal 11
+        show: true
+        hd_channel: 31
+        logo: https://new.static.tv.nu/47578031
+      12:
+        name: TV12
+        show: true
+        hd_channel: 32
+        logo: https://new.static.tv.nu/47578032
+      13:
+        name: MTV
+        show: true
+        hd_channel: 65
+        logo: https://new.static.tv.nu/234
+      14:
+        name: FOX
+        show: true
+        hd_channel: 30
+        logo: https://new.static.tv.nu/4164720
+      15:
+        name: TV4 Fakta
+        show: true
+        logo: https://new.static.tv.nu/28780550
+      16:
+        name: TLC
+        show: true
+        hd_channel: 37
+        logo: https://new.static.tv.nu/67
+      17:
+        name: Paramount Network HD
+        show: true
+        logo: https://new.static.tv.nu/29899618
+      18:
+        name: ATG Live
+        show: true
+        logo: https://new.static.tv.nu/20920604
+      19:
+        name: TV10 HD
+        show: true
+        logo: https://new.static.tv.nu/47578030
+      20:
+        name: TV3 Sport HD
+        show: true
+        logo: https://new.static.tv.nu/16587347
+      21:
+        name: SVT1 HD
+        show: true
+        logo: https://new.static.tv.nu/47578019
+      22:
+        name: SVT2 HD
+        show: true
+        logo: https://new.static.tv.nu/47578022
+      23:
+        name: TV3 HD
+        show: true
+        logo: https://new.static.tv.nu/47578023
+      24:
+        name: TV4 HD
+        show: true
+        logo: https://new.static.tv.nu/47578024
+      25:
+        name: Kanal 5 HD
+        show: true
+        logo: https://new.static.tv.nu/47578025
+      26:
+        name: TV6 HD
+        show: true
+        logo: https://new.static.tv.nu/47578026
+      27:
+        name: Sjuan HD
+        show: true
+        logo: https://new.static.tv.nu/47578027
+      28:
+        name: TV8 HD
+        show: true
+        logo: https://new.static.tv.nu/47578028
+      29:
+        name: Kanal 9 HD
+        show: true
+        logo: https://new.static.tv.nu/47578029
+      30:
+        name: FOX HD
+        show: true
+        logo: https://new.static.tv.nu/4164720
+      31:
+        name: Kanal 11 HD
+        show: true
+        logo: https://new.static.tv.nu/47578031
+      32:
+        name: TV12 HD
+        show: true
+        logo: https://new.static.tv.nu/47578032
+      33:
+        name: Outdoor Channel HD
+        show: true
+        logo: https://new.static.tv.nu/262
+      34:
+        name: Animal Planet HD
+        show: true
+        logo: https://new.static.tv.nu/24010534
+      35:
+        name: National Geographic Wild HD
+        show: true
+        logo: https://new.static.tv.nu/126
+      36:
+        name: Discovery Channel HD
+        show: true
+        logo: https://new.static.tv.nu/39679776
+      37:
+        name: TLC HD
+        show: true
+        logo: https://new.static.tv.nu/67
+      38:
+        name: History HD
+        show: true
+        logo: https://new.static.tv.nu/138
+      39:
+        name: National Geographic Wild
+        show: true
+        hd_channel: 35
+        logo: https://new.static.tv.nu/126
+      41:
+        name: Animal Planet
+        show: true
+        hd_channel: 34
+        logo: https://new.static.tv.nu/24010534
+      42:
+        name: Axess TV
+        show: true
+        logo: https://new.static.tv.nu/19402320
+      43:
+        name: Expressen TV
+        show: true
+        logo: https://new.static.tv.nu/18529932
+      44:
+        name: Discovery Channel
+        show: true
+        hd_channel: 36
+        logo: https://new.static.tv.nu/39679772
+      46:
+        name: Discovery Science
+        show: true
+        logo: https://new.static.tv.nu/65
+      47:
+        name: Investigation Discovery
+        show: true
+        logo: https://new.static.tv.nu/19402425
+      49:
+        name: Kanal 10
+        show: true
+        logo: https://new.static.tv.nu/252
+      50:
+        name: BBC Earth
+        show: true
+        logo: https://new.static.tv.nu/59
+      51:
+        name: MTV Rocks
+        show: true
+        logo: https://new.static.tv.nu/24
+      52:
+        name: Mezzo
+        show: true
+        logo: https://new.static.tv.nu/549247
+      53:
+        name: National Geographic
+        show: true
+        hd_channel: 58
+        logo: https://new.static.tv.nu/190
+      55:
+        name: Travel Channel HD
+        show: true
+        logo: https://new.static.tv.nu/32063254
+      56:
+        name: Travel Channel
+        show: true
+        hd_channel: 55
+        logo: https://new.static.tv.nu/32063254
+      57:
+        name: MTV Live HD
+        show: true
+        logo: https://new.static.tv.nu/321694
+      58:
+        name: National Geographic HD
+        show: true
+        logo: https://new.static.tv.nu/190
+      59:
+        name: VH1
+        show: true
+        logo: https://new.static.tv.nu/51
+      60:
+        name: Viasat Nature HD
+        show: true
+        logo: https://new.static.tv.nu/321696
+      61:
+        name: Viasat History HD
+        show: true
+        logo: https://new.static.tv.nu/117
+      62:
+        name: Paramount Network
+        show: true
+        hd_channel: 17
+        logo: https://new.static.tv.nu/29899618
+      63:
+        name: BBC Brit
+        show: true
+        logo: https://new.static.tv.nu/7
+      64:
+        name: TV4 Guld
+        show: true
+        logo: https://new.static.tv.nu/28780548
+      65:
+        name: MTV HD
+        show: true
+        logo: https://new.static.tv.nu/234
+      67:
+        name: Horse & Country
+        show: true
+        logo: https://new.static.tv.nu/321684
+      68:
+        name: FTV
+        show: true
+        logo: https://new.static.tv.nu/56
+      69:
+        name: Nautical Channel
+        show: true
+        logo: https://new.static.tv.nu/47
+      71:
+        name: CBS Reality
+        show: true
+        logo: https://new.static.tv.nu/38
+      74:
+        name: OUTtv
+        show: true
+        logo: https://new.static.tv.nu/257
+      79:
+        name: C More First
+        show: true
+        hd_channel: 84
+        logo: https://new.static.tv.nu/148
+      80:
+        name: C More Hits
+        show: true
+        hd_channel: 118
+        logo: https://new.static.tv.nu/152
+      81:
+        name: C More Stars HD
+        show: true
+        logo: https://new.static.tv.nu/16986042
+      82:
+        name: C More Series
+        show: true
+        hd_channel: 119
+        logo: https://new.static.tv.nu/166
+      83:
+        name: C More Stars
+        show: true
+        hd_channel: 81
+        logo: https://new.static.tv.nu/16986042
+      84:
+        name: C More First HD
+        show: true
+        logo: https://new.static.tv.nu/148
+      86:
+        name: Viasat Series HD
+        show: true
+        logo: https://new.static.tv.nu/180
+      87:
+        name: Viasat Film Family
+        show: true
+        logo: https://new.static.tv.nu/182
+      94:
+        name: TV4 Film
+        show: true
+        logo: https://new.static.tv.nu/28780547
+      96:
+        name: Viasat Explore HD
+        show: true
+        logo: https://new.static.tv.nu/203
+      97:
+        name: Viasat Film Premiere HD
+        show: true
+        logo: https://new.static.tv.nu/174
+      98:
+        name: SF-kanalen
+        show: true
+        logo: https://new.static.tv.nu/28973518
+      99:
+        name: Sport Expressen TV
+        show: true
+      100:
+        name: Eurosport 2 HD
+        show: true
+        logo: https://new.static.tv.nu/18995279
+      101:
+        name: Eurosport 1
+        show: true
+        hd_channel: 102
+        logo: https://new.static.tv.nu/47880752
+      102:
+        name: Eurosport 1 HD
+        show: true
+        logo: https://new.static.tv.nu/47880752
+      103:
+        name: Eurosport 2
+        show: true
+        hd_channel: 100
+        logo: https://new.static.tv.nu/18995279
+      104:
+        name: C More Live HD
+        show: true
+        logo: https://new.static.tv.nu/266
+      110:
+        name: Viasat Golf HD
+        show: true
+        logo: https://new.static.tv.nu/244
+      111:
+        name: Viasat Fotboll HD
+        show: true
+        logo: https://new.static.tv.nu/240
+      112:
+        name: Viasat Hockey HD
+        show: true
+        logo: https://new.static.tv.nu/246
+      114:
+        name: C More Hockey
+        show: true
+        hd_channel: 332
+        logo: https://new.static.tv.nu/218
+      115:
+        name: C More Fotboll
+        show: true
+        hd_channel: 331
+        logo: https://new.static.tv.nu/216
+      116:
+        name: Extreme Sports Channel
+        show: true
+        logo: https://new.static.tv.nu/44
+      117:
+        name: FUEL TV
+        show: true
+        logo: https://new.static.tv.nu/321690
+      118:
+        name: C More Hits HD
+        show: true
+        logo: https://new.static.tv.nu/152
+      119:
+        name: C More Series HD
+        show: true
+        logo: https://new.static.tv.nu/166
+      120:
+        name: CNN International
+        show: true
+        logo: https://new.static.tv.nu/11
+      121:
+        name: Di TV HD
+        show: true
+      122:
+        name: CNBC
+        show: true
+        logo: https://new.static.tv.nu/3
+      123:
+        name: BBC World News
+        show: true
+        logo: https://new.static.tv.nu/31
+      124:
+        name: Kunskapskanalen HD
+        show: true
+        logo: https://new.static.tv.nu/24407227
+      125:
+        name: Kunskapskanalen
+        show: true
+        hd_channel: 124
+        logo: https://new.static.tv.nu/24407227
+      128:
+        name: Al Jazeera English
+        show: true
+        logo: https://new.static.tv.nu/33
+      129:
+        name: Mezzo Live HD
+        show: true
+        logo: https://new.static.tv.nu/321711
+      130:
+        name: Sportkanalen HD
+        show: true
+        logo: https://new.static.tv.nu/18608170
+      131:
+        name: Viasat Motor HD
+        show: true
+        logo: https://new.static.tv.nu/206
+      132:
+        name: Viasat Sport HD
+        show: true
+        logo: https://new.static.tv.nu/19402405
+      140:
+        name: Viasat Film Hits HD
+        show: true
+        logo: https://new.static.tv.nu/178
+      141:
+        name: Viasat Film Action HD
+        show: true
+        logo: https://new.static.tv.nu/176
+      145:
+        name: Viasat Sport Premium HD
+        show: true
+        logo: https://new.static.tv.nu/16958245
+      147:
+        name: eSportsTV HD
+        show: true
+        logo: https://new.static.tv.nu/16641721
+      148:
+        name: GINX Esports TV
+        show: true
+        logo: https://new.static.tv.nu/321712
+      149:
+        name: SVT24 HD / SVT Barn HD
+        show: true
+        logo: https://new.static.tv.nu/17274920
+      150:
+        name: Cartoon Network
+        show: true
+        logo: https://new.static.tv.nu/250
+      151:
+        name: Nick Jr
+        show: true
+        hd_channel: 161
+        logo: https://new.static.tv.nu/255
+      152:
+        name: Nickelodeon
+        show: true
+        hd_channel: 160
+        logo: https://new.static.tv.nu/19402557
+      153:
+        name: SVT24 / SVT Barn
+        show: true
+        hd_channel: 149
+        logo: https://new.static.tv.nu/17274920
+      157:
+        name: Nicktoons
+        show: true
+        logo: https://new.static.tv.nu/17553887
+      158:
+        name: Boomerang
+        show: true
+        logo: https://new.static.tv.nu/247
+      160:
+        name: Nickelodeon HD
+        show: true
+        logo: https://new.static.tv.nu/19402557
+      161:
+        name: Nick Jr HD
+        show: true
+        logo: https://new.static.tv.nu/255
+      166:
+        name: NRK1 HD
+        show: true
+        logo: https://new.static.tv.nu/35
+      167:
+        name: NRK2 HD
+        show: true
+        logo: https://new.static.tv.nu/321680
+      168:
+        name: NRK3/Super HD
+        show: true
+        logo: https://new.static.tv.nu/19402558
+      169:
+        name: TV2 Norge HD
+        show: true
+        logo: https://new.static.tv.nu/321682
+      170:
+        name: DR1
+        show: true
+        hd_channel: 171
+        logo: https://new.static.tv.nu/130
+      171:
+        name: DR2 HD
+        show: true
+        logo: https://new.static.tv.nu/4051553
+      172:
+        name: TV2
+        show: true
+        logo: https://new.static.tv.nu/4051554
+      174:
+        name: HRT1
+        show: true
+        logo: https://new.static.tv.nu/133
+      175:
+        name: YLE1 HD
+        show: true
+        logo: https://new.static.tv.nu/7873755
+      176:
+        name: YLE2 HD
+        show: true
+        logo: https://new.static.tv.nu/8396085
+      177:
+        name: TV Finland
+        show: true
+      178:
+        name: TV Chile
+        show: true
+      179:
+        name: TV Polonia
+        show: true
+      180:
+        name: TV5 Monde
+        show: true
+        logo: https://new.static.tv.nu/15
+      182:
+        name: ZDF
+        show: true
+        logo: https://new.static.tv.nu/8220937
+      183:
+        name: Al Jazeera Arabic
+        show: true
+      184:
+        name: MBC
+        show: true
+      187:
+        name: TRT1 HD
+        show: true
+      203:
+        name: Pink Plus
+        show: true
+      204:
+        name: Channel One Russia Worldwide
+        show: true
+      206:
+        name: RTS-Sat
+        show: true
+      207:
+        name: RTK
+        show: true
+      208:
+        name: OBN
+        show: true
+      209:
+        name: TV Montenegro RTCG
+        show: true
+      210:
+        name: 3sat
+        show: true
+      211:
+        name: Canal 24 Horas
+        show: true
+      212:
+        name: Canal de las Estrellas
+        show: true
+      213:
+        name: Rai Due
+        show: true
+      214:
+        name: Rai Uno
+        show: true
+      215:
+        name: France 2 HD
+        show: true
+      216:
+        name: Duna TV
+        show: true
+      217:
+        name: M2 Magyar
+        show: true
+      219:
+        name: Pro TV International
+        show: true
+      220:
+        name: TVE International HD
+        show: true
+        logo: https://new.static.tv.nu/10
+      222:
+        name: Hayat Plus
+        show: true
+      331:
+        name: C More Fotboll HD
+        show: true
+        logo: https://new.static.tv.nu/216
+      332:
+        name: C More Hockey HD
+        show: true
+        logo: https://new.static.tv.nu/218
+      338:
+        name: C More Golf HD
+        show: true
+        logo: https://new.static.tv.nu/16487934
+      339:
+        name: C More Golf
+        show: true
+        hd_channel: 338
+        logo: https://new.static.tv.nu/16487934
+      352:
+        name: C More Live 2
+        show: true
+        hd_channel: 361
+        logo: https://new.static.tv.nu/210
+      353:
+        name: C More Live 3
+        show: true
+        hd_channel: 362
+        logo: https://new.static.tv.nu/212
+      354:
+        name: C More Live 4
+        show: true
+        hd_channel: 363
+        logo: https://new.static.tv.nu/214
+      355:
+        name: C More Live
+        show: true
+        hd_channel: 104
+        logo: https://new.static.tv.nu/266
+      361:
+        name: C More Live 2 HD
+        show: true
+        logo: https://new.static.tv.nu/210
+      362:
+        name: C More Live 3 HD
+        show: true
+        logo: https://new.static.tv.nu/212
+      363:
+        name: C More Live 4 HD
+        show: true
+        logo: https://new.static.tv.nu/214
+      364:
+        name: C More Live 5 HD
+        show: true
+        logo: https://new.static.tv.nu/17388444
+      450:
+        name: Lokal kanal
+        show: true
+      701:
+        name: SVT 1 Talande text
+        show: true
+        logo: https://new.static.tv.nu/47578019
+      702:
+        name: SVT 2 Talande text
+        show: true
+        logo: https://new.static.tv.nu/47578022
+      777:
+        name: Com Hem
+        show: true
