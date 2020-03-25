@@ -70,8 +70,6 @@ decluttering_templates:
       show_entity_picture: true
       entity_picture: '/local/lovelace/remote/[[image]]'
       tap_action: '[[tap_action]]'
-        # action: call-service
-        # service: '[[entity]]'
       styles:
         card:
           - background-color: rgba(56,60,69,1)
