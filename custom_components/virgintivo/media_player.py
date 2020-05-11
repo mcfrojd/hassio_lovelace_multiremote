@@ -18,7 +18,7 @@ import voluptuous as vol
 
 REQUIREMENTS = ['beautifulsoup4>=4.4.1']
 
-VERSION = '0.1.8'
+VERSION = '0.1.11'
 
 from homeassistant.components.media_player import (
     MediaPlayerDevice, PLATFORM_SCHEMA)
@@ -495,7 +495,7 @@ class VirginTivo(MediaPlayerDevice):
             self._sdoverride['enabled'] = False
             self._sdoverride['channel_id'] = None
 
-        if self._force_hd_on_tv and self._channels[channel_id][CONF_HDCHANNEL] and not self._sdoverride['enabled']:
+        if self._force_hd_on_tv and channel_id in self._channels and self._channels[channel_id][CONF_HDCHANNEL] and not self._sdoverride['enabled']:
             if self._sdoverride['channel_id'] == channel_id and self._sdoverride['refresh_time'] >= time.time():
                 self._sdoverride['enabled'] = True
             else:
@@ -555,10 +555,13 @@ class VirginTivo(MediaPlayerDevice):
 
                 if current_channel_name is not None:
                     current_channel_id = self._channel_name_id[current_channel_name]
-                    if new_channel_id != current_channel_id:
-                        _LOGGER.debug("%s: changing to channel [%s]", self._name, new_status)
                 else:
                     current_channel_id = -1
+
+                if new_channel_id != current_channel_id:
+                    _LOGGER.debug("%s: changing to channel [%s]", self._name, new_status)
+                    if new_channel_id not in self._channels:
+                        _LOGGER.warning("%s: incorrect channel configuration for channel [%d]", self.name, new_channel_id)
 
                 if new_channel_id in self._target_ids:
                     _LOGGER.debug("%s: switcher source triggered %s,%s,%s", self._name, str(new_channel_id),
@@ -942,13 +945,13 @@ def get_channel_listings(config):
     from bs4 import BeautifulSoup
 
     class ChannelListing:
-        def __init__(self, channel_id, channel_name, package, is_hd):
+        def __init__(self, channel_id, channel_name, package, is_hd, is_plus_one = False, base_name = ""):
             self.channel_id = channel_id
             self.channel_name = channel_name
             self.package = package
             self.is_hd = is_hd
-            self.is_plus_one = False
-            self.base_name = ""
+            self.is_plus_one = is_plus_one
+            self.base_name = base_name
             self.show = ""
             self.hd_ver = ""
             self.plus_one_ver = ""
@@ -1014,25 +1017,54 @@ def get_channel_listings(config):
         res = requests.get(vc_url)
         soup = BeautifulSoup(res.text, "html.parser")
 
+
+
         for table in soup.find_all(class_=["wikitable sortable"]):
+            header = True
             for row in table.findAll("tr"):
                 cells = row.findAll(["td"])
-                if len(cells) >= 6:
-                    if cells[1].find(text=True).strip() == "Local TV":
-                        cells[5] = BeautifulSoup("Player", "html.parser")
-                        cells[6] = BeautifulSoup("SDTV", "html.parser")
-                    if cells[6].find(text=True) is not None:
-                        channel_id = cells[0].find(text=True).strip()
-                        if channel_id not in ignore_channels:
-                            channel_name = cells[1].find(text=True).split('/')[0].strip()
-                            channel_name = "'{}'".format(channel_name) if "&" in channel_name else channel_name
-                            package = cells[5].find(text=True).strip()
-                            is_hd = contains(cells[6].find(text=True), "HDTV")
+                if len(cells) >= 6 and not header:
+                    if len(cells) > 6:  # TV Channels
+                        CELL_HD = 0
+                        CELL_SD = 1
+                        CELL_PLUSONE = 2
+                        CELL_CHANNELNAME = 3
+                        CELL_PACKAGEHD = 7
+                        CELL_PACKAGESD = 8
+                    else:  # Radio Channels
+                        CELL_HD = 0
+                        CELL_SD = 0
+                        CELL_PLUSONE = 0
+                        CELL_CHANNELNAME = 1
+                        CELL_PACKAGEHD = 5
+                        CELL_PACKAGESD = 5
+
+                    if cells[CELL_CHANNELNAME].find(text=True) is not None:
+                        channel_name = cells[CELL_CHANNELNAME].find(text=True).split('/')[0].strip()
+                        channel_name = "'{}'".format(channel_name) if "&" in channel_name else channel_name
+                        package = cells[CELL_PACKAGEHD].find(text=True).strip()
+                        if not package:
+                            package = cells[CELL_PACKAGESD].find(text=True).strip()
+
+                        channel_id = cells[CELL_HD].find(text=True).strip()
+                        if channel_id and channel_id not in ignore_channels:
                             ignore_channels.append(channel_id)
-                            all_channels[channel_id] = ChannelListing(channel_id, channel_name, package, is_hd)
-                            if "+1" in channel_name or "ja vu" in channel_name:
-                                all_channels[channel_id].is_plus_one = True
-                            all_channels[channel_id].base_name = base_name(channel_name)
+                            all_channels[channel_id] = ChannelListing(channel_id, channel_name + " HD", package, is_hd=True,
+                                                                      is_plus_one=False, base_name=channel_name)
+
+                        channel_id = cells[CELL_SD].find(text=True).strip()
+                        if channel_id and channel_id not in ignore_channels:
+                            ignore_channels.append(channel_id)
+                            all_channels[channel_id] = ChannelListing(channel_id, channel_name, package, is_hd=False,
+                                                                      is_plus_one=False, base_name=channel_name)
+
+                        channel_id = cells[CELL_PLUSONE].find(text=True).strip()
+                        if channel_id and channel_id not in ignore_channels:
+                            ignore_channels.append(channel_id)
+                            all_channels[channel_id] = ChannelListing(channel_id, channel_name + " +1", package, is_hd=False,
+                                                                      is_plus_one=True, base_name=channel_name)
+                else:
+                    header = False
 
         for channel in all_channels.values():
             if not channel.is_hd and not channel.is_plus_one:
